@@ -1,0 +1,1684 @@
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+ \mode<presentation>{ 
+ \usetheme{Antibes}%\usetheme{Warsaw}  
+\setbeamercovered{transparent}
+   %\usecolortheme{albatross} % for inverted color
+% \usecolortheme{wolverine} % way too flashy!
+    %\usefonttheme{structurebold}
+    %\usetheme{Berkeley}
+    % or ...    \setbeamercovered{transparent}
+    % or whatever (possibly just delete it)
+ 
+ } 
+%\mode<handout>
+
+ \frametitle{Traducció automàtica estadística}
+
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+\usepackage{alltt}
+\usepackage[normalem]{ulem}
+
+\newcommand{\Pair}[2]{\texttt{#1}\(\leftrightarrow\)\texttt{#2}}
+\newcommand{\pair}[2]{\texttt{#1}\(\to\)\texttt{#2}}
+
+\title[Traducció automàtica]{Traducció automàtica}
+
+\author[M.L.\ Forcada]{Mikel L.\ Forcada\inst{1,2}}
+
+\institute[Universitat d'Alacant i Prompsit]{ 
+\inst{1}Departament de Llenguatges i Sistemes Informàtics,\\
+Universitat d'Alacant,  03071 Alacant \\[0.2cm]
+\inst{2}Prompsit Language Engineering, S.L., \\ Edifici Quorum III, Av. Universitat s/n, 03202 Elx}
+
+
+\date[06/07/2011]{La linguística i les seues aplicacions en la societat\\ Castelló, 6 de juliol de 2011}
+
+
+\newcommand{\tu}[2]{(\texttt{``#1''},\texttt{``#2''})}
+
+\newcommand{\catala}{català}
+\newcommand{\catalana}{catalana}
+\newcommand{\espanyol}{espanyol}
+\newcommand{\delespanyol}{de l'espanyol}
+\newcommand{\lespanyola}{l'espanyola}
+\newcommand{\menjo}{menjo}
+\newcommand{\uneixi}{uneixi}
+\newcommand{\atura}{atura}
+\newcommand{\empha}[1]{\emph{#1}\/}
+
+%\newcommand{\curs}{Traducció Automàtica: Fonaments i Aplicacions}
+%\newcommand{\llocidata}{Universitat d'Alacant, 2004}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+
+\begin{document}
+
+\frame{\maketitle}
+% \begin{frame}
+% \maketitle
+% \titlepage
+% \end{frame}
+
+\begin{frame}<beamer>
+\frametitle{Contents}
+\tableofcontents
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%
+\section{Què és la traducció automàtica (TA)?}
+\begin{frame}
+\frametitle{ Què és la traducció automàtica (TA)? /1}
+
+{
+{La \empha{traducció}, \ldots }
+\pause
+
+{\ldots mitjançant un \empha{sistema informàtic} \ldots}
+\pause
+
+{\ldots (ordinador(s) +
+  programes) \ldots}
+\pause
+
+{\ldots de \empha{textos informatitzats} en la \empha{llengua
+    origen} (LO)\ldots}
+\pause
+
+{\ldots a \empha{textos informatitzats} en la \empha{llengua meta}
+  (LM).}
+
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{ Què és la traducció automàtica (TA)? /2}
+
+Esquemàticament:
+
+\begin{center}
+\begin{tabular}{ccccc}
+\textbf{Text LO} & $\to$ & \framebox{\parbox{3.5cm}{Sistema de traducció
+    automàtica}} & $\to$ & \parbox{2.0cm}{\textbf{Text LM} (en brut)} \\ 
+\end{tabular}
+\end{center}
+
+\end{frame}
+\begin{frame}
+  \frametitle{Què \textbf{no} és?}
+
+  Hi ha altres tecnologies de traducció que no són traducció
+  automàtica. 
+
+  Destaquen els sistemes de \textbf{traducció assistida per ordinador} basats en \textbf{memòries de traducció}.
+
+  En parlarem una miqueta al final de la lliçó si tenim temps!.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%
+
+\section{Aplicacions de la TA}
+\begin{frame}
+\frametitle{ Aplicacions de la TA /1}
+
+
+Dos grans grups:
+\begin{itemize} 
+
+\item\empha{Assimilació:} traducció \textbf{efímera},
+    idealment \textbf{instantània}, per a la revisió o la
+    \textbf{comprensió} de documents en una altra llengua que no
+    coneixem. P.ex., \empha{``navegació traduïda'' per internet}, \empha{xat
+      (\textit{chat}) multilingüe}, etc.
+
+  \item\empha{Disseminació:} traducció \textbf{permanent}, idealment
+    \textbf{amb pocs errors}, per a la \textbf{publicació}. P.ex.,
+    producció d'\textbf{esborranys} per a corregir (\textit{posteditar}).
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Assimilació: un text en irlandés/1}
+
+  \empha{Is ar an Oileán Fada a bhí mé féin agus m’fhear céile ag fanacht
+  nuair a rinne muid an turas sin. Dúradh linn fanacht cois farraige
+  ag am díthrá agus thuirling an muireitleán anuas chun sinn a
+  thabhairt ar bord. Bhí dream beag ar an turas mar níor thóg an
+  t-eitleán sin thar deichniúr in am ar bith. Níl cur síos ar na
+  radhairc a chonaic muid ar an aistear go dtí an mhórsceir.  Taobh
+  istigh d’uair an chloig, bhí an mhórsceir féin bainte amach againn
+  agus ba dhochreidte na radhairc a chonaic muid os ár gcomhair.}
+\begin{itemize}
+\item Qui s'anima a dir de què va?
+
+\end{itemize}
+  \end{frame}
+
+%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Assimilació: traducció de Google Translate}
+
+  \empha{És a Long Island i estava esperant al meu marit quan vam fer el
+  viatge. Ens van dir de quedar a la vora del mar a \textbf{díthrá} i va
+  aterrar passat el vaixell que ens portarà a bord. Petit grup va ser
+  en el viatge no havia van prendre l'avió més de deu en poc temps. No
+  hi ha una descripció de les escenes que vam veure en el viatge cap a
+  l'escull. En qüestió d'hores, l'escull que s'han llaurat va ser
+  increïble i les escenes que vam veure davant nostre.}
+\begin{itemize}
+\item El sistema no reconeix el mot \empha{díthrá}
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Assimilació: el que volia dir (poc més o menys)}
+
+\empha{Era a Long Island on m'estava amb al meu marit quan vam fer el
+  viatge. Ens van dir de quedar a la vora del mar a l'hora de la
+  \textbf{baixamar}, on va aterrar l'hidroavió que ens portaria a bord. Era un
+  petit grup, el del viatge, perquè no prenien aquell avió més de deu
+  persones en cap moment. No hi ha com descriure les escenes que vam
+  veure en el viatge cap a l'escull. En qüestió d'hores, havíem
+  abastat l'escull i van ser increïbles les vistes que vam veure
+  davant nostre.}
+
+\begin{itemize}
+\item \empha{dithrà} = \empha{baixamar}
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{ Aplicacions de la TA /2}
+
+\empha{Postedició i preedició}: els professionals col·laboren amb el
+  sistema de TA en aplicacions de \textbf{disseminació}:
+\begin{itemize}
+\item\empha{Postedició:} correcció del text traduït en brut
+  per a fer-lo adequat al propòsit previst (de seguida veurem un exemple).
+\item Un pas més: \empha{preedició} o preparació del text per a evitar
+  lèxic o construccions que donen problemes de traducció coneguts amb un
+  sistema de traducció automàtica. 
+  \begin{itemize}
+  \item Interessant quan el mateix text original s'ha de traduir a moltes llengues meta (una preedició pot estalviar moltes postedicions).
+
+  \end{itemize}
+\end{itemize}
+
+  Conéixer bé \empha{com funciona} el sistema de TA ajuda molt en
+  ambdues tasques.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{ Aplicacions de la TA /3}
+
+{ {Alternativa en cas de preedició repetitiva: \empha{llenguatge
+      controlat}.}
+\begin{itemize}\setlength{\itemsep}{0pt}
+{\item Els autors escriuen ja pensant en el tractament automatitzat
+  del text.}
+{\item S'eviten lèxic i construccions problemàtiques per al sistema de TA per minimitzar (no \empha{eliminar}) la postedició.
+  \begin{itemize}
+  \item (en) \empha{replace} \(\to\) (ca) \empha{substituir} (en: \empha{substitute}) o \empha{tornar a col·locar} (en: \empha{put back})?
+  \end{itemize}
+
+}
+{\item Consistència d'estil, comprensibilitat, mantenibilitat dels documents originals.}
+{\item Però els autors han de conéixer i aplicar el llenguatge controlat!}
+{\item Se'ls pot ajudar amb eines informàtiques.}
+\end{itemize}
+%\textbf{[transparències introducció progressiva?]}
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Exemple de postedició: text original en portugués} 
+
+  \empha{Nova Iorque teve ontem uma noite de festa, após a aprovação
+    durante a tarde (madrugada em Lisboa) pelo Senado estadual da lei
+    que reconhece o direito ao casamento homossexual, por 33 votos
+    contra 29, após anos de falhanço nesta câmara-alta.  O \textbf{projecto} de
+    lei tinha até aqui sido aprovado quatro vezes pela Assembleia do
+    Estado, mas tinha sido sempre \textbf{rejeitada} pelo Senado de Nova
+    Iorque, que agora se torna no sexto \textbf{estados} dos EUA a permitir o
+    casamento entre pessoas do mesmo sexo.}
+
+  \begin{itemize}
+  \item El text original te dues errades (en negreta).
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Traducció en brut al valencià (apertium-pt-ca)}
+
+  \empha{Nova York va tenir ahir una nit de festa, *após l'aprovació
+    durant la tarda (matinada a Lisboa) pel *Senado *estadual de la
+    llei que reconeix el dret a les noces homosexuals, per 33 vots
+    contra 29, *após anys de fracàs en aquesta càmera-alta.  El
+    projecte de llei tenia fins a aquí estat aprovat quatre vegades
+    per l'Assemblea de l'Estat, però havia estat sempre rebutjada pel
+    *Senado de Nova York, que ara es fa en el sisè estats dels *EUA a
+    permetre les noces entre persones del mateix sexe.}
+
+  \begin{itemize}
+  \item Els mots desconeguts pel sistema estan marcats amb un asterisc.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Text posteditat (postedició ràpida)}
+
+  \empha{Nova York va \textbf{passar} ahir una nit de festa,
+    \textbf{després de} l'aprovació durant la \textbf{vesprada}
+    (matinada a \textbf{Castelló}) pel Senat \textbf{d'aquest estat}
+    de la llei que reconeix el dret \textbf{al matrimoni dels}
+    homosexuals, per 33 vots contra 29, \textbf{després d'}anys de
+    fracàs en aquesta \textbf{cambra} alta.  El projecte de llei
+    \textbf{havia} estat \textbf{fins ara} aprovat quatre vegades per
+    l'Assemblea de l'Estat, però havia estat sempre \textbf{rebutjat}
+    pel \textbf{Senat} de Nova York, que ara es \textbf{converteix} en
+    el sisè \textbf{estat} dels \textbf{EUA} a permetre \textbf{el
+      matrimoni} entre persones del mateix sexe.}
+
+  \begin{itemize}
+  \item Els canvis s'indiquen amb negretes.
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{ Aplicacions de la TA /4}
+
+{
+{En primera aproximació, la postedició és convenient quan 
+$$\textbf{cost}\left(\mbox{\begin{tabular}{c}traducció automàtica\\ +\\
+  postedició professional\end{tabular}}\right) < \textbf{cost}(\mbox{traducció professional}).  
+$$
+(la fórmula amaga molts detalls del \empha{cost}).
+}
+
+{Perquè la postedició siga eficient:}
+\begin{itemize}\setlength{\itemsep}{0pt}
+{\item no pot afectar a una gran part del text (máx. 20\%--30\%, si no, s'abandona i es comença des de zero)}
+{\item cal ser competent en la llengua meta $\to$ generar un
+  text genuí a partir del text en brut}
+{\item s'ha de tenir en compte el propòsit del text traduït}
+{\item cal conéixer el sistema de TA $\to$ reconéixer l'origen dels
+  errors, predir-ne el comportament}
+\end{itemize}
+}
+\end{frame}
+
+
+\section{Com funciona la TA?}
+
+\begin{frame}
+  \frametitle{Com funciona la TA? /1}
+Dues grans tecnologies: 
+\begin{itemize}
+\item la \textbf{traducció automàtica basada en regles (TABR)} i
+\item la \textbf{traducció automàtica basada en corpus (TABC)} 
+\end{itemize}
+Per descomptat, hi ha aproximacions \empha{híbrides}.
+\end{frame}
+%%%%%%
+
+\begin{frame}
+  \frametitle{Com funciona la TA? /2}
+
+La \textbf{traducció automàtica basada en regles (TABR)}
+  \begin{itemize}
+  \item aproximació dominant en productes comercials fins fa poc
+  \item experts compilen diccionaris, regles de traducció i escriuen programes que els apliquen
+  \item parlaré fonamentalment d'aquest tipus de TA
+  \item exemples: \empha{Systran}, \empha{Lucy}, \empha{Apertium}, \empha{Reverso}, etc.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Com funciona la TA? /3}
+La \textbf{traducció automàtica basada en corpus (TABC)} (i, molt especialment, la \empha{traducció automàtica estadística}:
+  \begin{itemize}
+  \item és ara l'aproximació més puixant (l'''estat de la qüestió'')
+  \item els sistemes ``aprenen a traduir'' a partir d'enormes corpus de text bilingüe alineat oració a oració
+  \item el que aprenen són complexos models estadístics (diccionaris probabilístics de mots i segments més llargs, probabilitats de reordenaments, etc.)
+  \item exemple: \empha{Google Translate}
+  \item en parlarem una miqueta només, més avant.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{ Com funciona la TA? /4}
+
+\textbf{Primera aproximació} [!!]: Traduir textos és
+\empha{traduir oracions}.
+
+Traduir oracions suposa:
+
+{
+\begin{itemize}
+  {\item \empha{Construir una interpretació} (un
+    \empha{significat}) a partir de l'oració en LO.}  {\item
+  \empha{Construir una oració en LM} a partir de la interpretació.}
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{ Com funciona la TA? /5}
+
+\empha{Principi de composicionalitat [semàntica]}:
+
+
+{
+{La \textbf{interpretació d'una oració} es construeix \ldots}
+
+\pause
+
+{\ldots a partir de les \textbf{interpretacions dels
+    mots} \ldots}
+
+\pause
+{\begin{center}\textit{Escriuen \empha{cartes}} $\neq$ \textit{Escriuen \empha{articles}}\end{center}}
+
+\pause
+{\ldots \empha{component-les} seguint les agrupacions indicades 
+per l'\textbf{estructura sintàctica} de
+  l'oració.}
+\pause
+{\begin{center} \textit{Israel amenaça Palestina} $\neq$ \textit{Palestina amenaça Israel} \end{center}}
+\pause
+Això permet que puguem assignar interpretació a oracions que no hem sentit mai:
+
+\pause
+{\begin{center} \textit{Arranqueu el projector del sostre i llanceu-lo per la finestra!} \end{center}}
+
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Com funciona la TA? /6}
+
+Però alerta!  Les \textbf{oracions} poden ser \textbf{ambigües} (\'es
+a dir, tenir m\'es d'una interpretaci\'o):
+
+\begin{itemize}
+\item perqu\`e els mots tenen m\'es d'una interpretaci\'{o}
+  (ambig\"uitat \empha{l\`exica})
+ 
+
+\item perqu\`{e} l'oraci\'{o} t\'{e} m\'{e}s d'una possible an\`alisi
+  sint\`actica (ambig\"uitat \empha{sint\`actica})
+
+\item per ambdues coses alhora.
+\end{itemize}
+(en veurem exemples més endavant)
+
+Elegir la interpretaci\'{o} correcta no \'es trivial per a un sistema
+  inform\`atic (normalment només pot usar part del \textbf{cotext}).
+
+%\textbf{[posar exemples ací?]}
+
+\end{frame} 
+
+
+
+%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{ Com funciona la TA? /7}
+
+Esquemàticament:
+
+{
+{
+\begin{center}
+\begin{tabular}{cccccc}
+\parbox{1.8cm}{Oració LO}
+& $\to$ 
+& interpretació 
+& $\to$ 
+& \parbox{1.8cm}{Oració LM} \\ 
+\end{tabular}
+\end{center}
+}
+
+{ En alguns sistemes de TA s'intenta representar directament les
+  \empha{interpretacions} amb una \empha{interlingua} (un llenguatge estructurat
+  artificial).}  }
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{ Com funciona la TA? /8}
+
+ { {Però... els \textbf{traductors
+      professionals} realment necessiten \textbf{interpretar} o
+    comprendre \textbf{completament} una oració per a
+    traduir-la?}
+
+{
+\begin{center}
+  \textsl{``... interacciones independientes del espín en unidades de la
+  sección eficaz del neutrino de Dirac...''} $\to$ \\
+  \textsl{\empha{``... interaccions independents de l'espín en unitats de la secció
+  eficaç del neutrí de Dirac...''} (\textbf{traductora i física de partícules?})}
+\end{center}
+}
+{
+\begin{center}
+\textsl{``\ldots tornillos que unen el volante de inercia al árbol de levas}
+ $\to$ \\
+\textsl{\empha{``\ldots caragols que uneixen el volant d'inèrcia a l'arbre
+de lleves \ldots''} (\textbf{traductora i enginyera mecànica?})}
+\end{center}
+} {No: \textbf{Transformen estructures} o patrons i
+\textbf{substitueixen el lèxic} (parant especial esment al
+terminològic).} 
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{ Com funciona la TA?  /9}
+
+{
+{Això permet fer la \textbf{segona aproximació} [!!], també anomenada \empha{aproximació de transferència}}
+\begin{itemize}\setlength{\itemsep}{0pt}
+{\item[] La majoria dels sistemes de TA \textbf{no construeixen
+    completament la interpretació}, \ldots}
+
+\pause
+{\item[]\ldots sinó que \textbf{transformen l'estructura sintàctica} de
+  l'oració en LO en una estructura sintàctica vàlida per a l'oració en
+  LM i\ldots}
+
+\pause
+{\item[]\ldots \textbf{substitueixen} els  mots de l'oració en LO per
+  equivalents adequats en LM\ldots }
+
+\pause
+{\item[]\ldots fent les dues operacions \textbf{bastant
+    independentment}.}
+\end{itemize}
+}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Com funciona la TA/10}
+Esquemàticament:
+\begin{small}
+\begin{center}
+\parbox{1.0cm}{Oració LO} $\to$
+\framebox{\parbox{0.8cm}{Anà\-lisi}} $\to$ 
+\parbox{1.0cm}{repre\-senta\-ció abs\-tracta LO} $\to$
+\framebox{\parbox{1.2cm}{Transfe\-rència}} $\to$
+\parbox{1.0cm}{repre\-senta\-ció abs\-tracta LM} $\to$
+\framebox{\parbox{0.8cm}{Gene\-ració}} $\to$
+\parbox{1.0cm}{Oració LM} 
+\end{center}
+  \end{small}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Com funciona la TA/11}
+
+  La tercera aproximació: arquitectura de transformació
+  (\empha{transformer}):
+
+  \begin{itemize}
+  \item Per a traduir entre llengües similars, no cal fer l'anàlisi sintàctica completa de l'oració.
+  \item Només es fa \empha{on cal}: anàlisi \empha{parcial} (la resta, mot a mot)
+    \begin{itemize}
+    \item Anàlisi morfològica: \empha{dit} \(\to\) \{\texttt{\textbf{dir}.verb.part.m.sg}, \texttt{\textbf{dit}.n.m.sg}\}
+    \item Desambiguació categorial: se n'elegeix una (\empha{has dit} \(\not\to\) \empha{*has dedo})
+    \item Identificació de patrons locals on caldrà establir la
+      concordança local, fer petits reordenaments (p.ex. \textbf{n--adj}: \empha{coixí groc} \(\not\to\) \empha{*almohada amarillo})
+    \end{itemize}
+  \item Aquesta aproximació s'usa més que no us penseu!
+  \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{ Com funciona la TA? /12}
+{
+  
+  { Per a programar un sistema de TA (basat en regles) cal \textbf{formular
+      tots els processos de traducció de forma} \empha{\textbf{explícita}} i
+    \empha{\textbf{mecanitzable}}} {(adéu ``intuïció
+    lingüística''!).}
+  
+  {A més, la mecanització ha de ser \empha{eficient} (programes
+    \textbf{ràpids} i \textbf{compactes}) i s'ha de
+    \textbf{dur a terme en un temps raonable}:}
+\begin{itemize}\setlength{\itemsep}{0pt}
+{\item Això exigeix una \textbf{reflexió lingüística}
+  (traductològica) sobre els processos de traducció per part dels
+  dissenyadors del sistema.}
+{\item A més, pot comportar més \textbf{aproximacions},
+  \textbf{simplificacions}, \textbf{compromisos} i
+  \textbf{sacrificis}.}
+\end{itemize}
+}
+\end{frame}
+
+%\section{Traducció automàtica estadística}
+\begin{frame}
+ \frametitle{Com funciona la TA/13}
+
+\textbf{Traducció automàtica basada en corpus}
+ \begin{itemize}
+ \item Fins ara hem parlat de \empha{traducció automàtica basada en regles} i diccionaries escrits per experts.
+\item Contràriament, la \textbf{traducció automàtica basada en corpus} es basa en la idea que ``les traduccions existents contenen més solucions a més problemes de traducció que qualsevol altre recurs disponible'' (Pierre Isabelle)
+\item Entre la traducció automàtica basada en corpus, destaca la
+\textbf{traducció automàtica estadística} per la seua hegemonia actual.
+ \end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Com funciona la TA? /14}
+
+\textbf{Entrenament d'un sistema estadístic:}
+
+En \empha{traducció automàtica estadística}, s'\empha{entrena} el
+sistema a partir de
+\begin{itemize}
+\item un \empha{gran corpus de text bilingüe alineat oració a
+  oració}  (o siga, un corpus bilingüe d'oracions)
+\item  i d'un \empha{corpus de text monolingüe en la llengua meta encara més gran}. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Com funciona la TA? /15}
+
+El resultat de l'\empha{entrenament}:
+\begin{itemize}
+\item Diccionaris \emph{probabilístics} de mots i segments de més d'un mot (on s'associen probabilitats a unitats de traducció com ara \tu{con cargo a}{a càrrec de} (probable) o \tu{con cargo a}{de bestreta} (improbable).
+\item Models que assignen probabilitats a seqüències de paraules en la llengua meta (de manera que \texttt{``dues de les tres són''} siga més probable que \texttt{``de són tres dues les''}.
+\item Models probabilístics de reordenament (p.ex., per a obtenir ``\texttt{el cotxe\(^2\) del qual\(^1\)}'' a partir de ``\texttt{cuyo\(^1\) coche\(^2\)}'')
+\end{itemize}
+
+\end{frame}
+\begin{frame}
+ \frametitle{Com funciona la TA? /16}
+
+\textbf{El procés de traducció estadística:}
+
+\begin{itemize}
+\item Aquestes probabilitats es poden veure com \empha{puntuacions
+    parcials} que es combinen per a cada oració i es ponderen amb
+  \empha{pesos} usant un \empha{barem} per a donar una
+  \empha{puntuació global} a totes les traduccions possibles d'una
+  oració donada.
+\item La traducció serà la que millor \empha{puntuació global} obtinga.
+\item Evidentment, no es baremen \empha{totes} les traduccions possibles (moltíssimes!): s'usen \emph{aproximacions} per a buscar només entre les que \emph{a priori} són més
+probables.
+\item Es tracta d'un procés computacionalment molt intensiu: per això només tenim traducció estadística aplicable des de fa poc més d'un decenni.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Com funciona la TA? /17}
+
+
+\textbf{Ajust} (o \empha{tuning}) del sistema estadístic: 
+
+D'acord, però, quin és el \empha{pes} que cal donar en el \emph{barem} a cada
+\empha{puntuació parcial}?
+
+Ens reservem una part del \empha{corpus bilingüe} per a l'ajust:
+\begin{itemize}
+\item Traduïm cada oració a l'altra llengua usant diferents valors dels \empha{pesos}
+\item Comparem quantitativament la \empha{semblança} entre la traducció
+  automàtica i la que hi ha al corpus.
+  \begin{itemize}
+  \item Normalment bastant burda: es puntuen les coincidències de grups d'un mot, de dos mots, de tres mots, etc (un altre barem!).
+  \end{itemize}
+\item Ajustem els pesos perquè aquesta \empha{semblança} siga com més
+  estreta millor per a tot el corpus d'ajust.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Com funciona la TA? /18}
+Com a conseqüència, en traducció automàtica estadística:
+\begin{itemize}
+\item No calen experts per a construir el sistema.
+\item És impossible puntuar totes les possibles traduccions d'una
+  oració donada (ens podem perdre la millor perquè la recerca és aproximada).
+\item Un sistema de traducció automàtica estadística entrenat sobre un determinat corpus produeix traduccions \empha{similars} a les del corpus.
+\item La \empha{semblança} vindrà determinada per la funció de \empha{semblança} usada per a l'ajust.
+\item Traduccions molt \empha{naturals} (gràcies al model
+  probabilístic de la llengua meta) poden ser \empha{infidels}.
+\item Canviar un mot origen pot donar lloc a una oració meta completament diferent.
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{ Com funciona la TA? /19} 
+  
+  \textbf{Per tant, tant si usem regles com estadística...}
+
+  \begin{itemize}
+  \item \empha{Podem esperar}, en el millor cas, que un bon sistema de TA 
+    \begin{itemize}
+    \item ens allibere de la
+      part més \empha{mecànica} (mecanitzable) de la tasca de traducció i
+    \item ens permeta concentrar-nos en la part més \empha{creativa} (per exemple, durant la postedició).
+    \end{itemize}
+
+
+  \item Però \empha{no hem d'esperar} ---per bo que siga--- que 
+    \begin{itemize}
+    \item comprenga
+      el text, 
+    \item resolga les ambigüitats sempre correctament i 
+    \item produïsca
+      textos en una variant genuïna de la llengua meta.
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Per què és difícil la TA?}
+\begin{frame}
+  \frametitle{ Per què és difícil la TA? /1} 
+
+   {
+  {Els quatre problemes de la traducció automàtica (Arnold 2003):}
+  \begin{enumerate}
+   {\item El problema de l'anàlisi}
+   {\item El problema de la síntesi}
+   {\item El problema de la transferència}
+   {\item El problema de la descripció}
+  \end{enumerate}
+  }
+
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{ Per què és difícil la TA? /2} 
+  
+  \textbf{El problema de l'anàlisi:} La forma no determina completament el
+  contingut (la \empha{interpretació}). També s'anomena \empha{ambigüitat}. 
+  Com hem vist, l'ambigüitat pot ser:
+  \begin{itemize}
+  \item \textbf{Estructural} o sintàctica:
+  \begin{itemize}
+  \item \empha{Portaven notícies de Grècia} (tema o procedència?)
+  \item \empha{Ha venut les taronges que ha
+  comprat a Joan} (Joan ven o compra?)
+  \item \empha{La direcció s'oposa a implantar mesures per evitar la crisi} (realment vol evitar la crisi?)
+  \end{itemize}
+  \item \textbf{Lèxica} 
+    \begin{itemize}
+  \item \empha{Treballa en l'estudi que li han encarregat} (prepara un document
+  o dissenya un taller d'artista?)
+  \item \empha{El gat és sota el cotxe} (felí o màquina d'alçar cotxes?)
+    \end{itemize}
+  \item O fins i tot \textbf{mixta}:
+    \begin{itemize}
+    \item Les gallines han destrossat el sembrat però no les mates (destrucció parcial? càstig severíssim?)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{ Per què és difícil la TA? /3} 
+  
+  \textbf{El problema de la síntesi} (o de la generació): El contingut
+  no determina completament la forma (hi ha més d'una manera de dir el
+  mateix en qualsevol llengua, però només una és \empha{genuïna} o la
+  més adequada per al propòsit previst):
+  \begin{itemize}
+  \item \empha{Quina hora és?}
+  \item \empha{Com és de tard?} (\texttt{de}: \empha{Wie spät ist es?})
+  \item \empha{Quines hores són?} (\texttt{pt}: \empha{Que horas s\~{a}o?})
+  \item \empha{Quantes del rellotge són?} (\texttt{de}: \empha{Wieviel Uhr ist es?})
+  \end{itemize}
+
+  Els \empha{expedients} s'\empha{obrin} o s'\empha{inicien}?
+
+  Les sessions es \empha{clouen}, es \empha{tanquen}, es \empha{rematen} o \empha{s'alcen}?
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{ Per què és difícil la TA? /4} 
+  
+  \textbf{El problema de la transferència:} Les llengües divergeixen. És a
+  dir, hi ha diferències irreductibles en la manera en que el mateix contingut
+  s'expressa en llengües diferents:
+  \begin{itemize}\itemsep 0ex
+  \item \texttt{ca:} \empha{M'agrada nadar} (\empha{M'} objecte, \empha{agrada},
+    verb, \empha{nadar} subjecte)
+  \item \texttt{en:} \empha{I like swimming} (\empha{I} subjecte, \empha{like}
+  verb, 
+  \empha{swimming} objecte)
+  \item \texttt{de:} \empha{Ich schwimme gern} (\empha{Ich} subjecte,
+  \empha{schwimme}, verb,  \empha{gern}, adverbi)
+  \end{itemize}
+  Totes volen dir \texttt{produir\_plaer(agent=nadar(agent=jo),destinatari=jo)}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{ Per què és difícil la TA? /5} 
+  
+  \textbf{El problema de la descripció} (represa): construir un sistema de
+  traducció automàtica comporta la gestió d'una gran quantitat de coneixement,
+  que s'ha d'elicitar, arreplegar, descriure, i representar en una forma útil i
+  computable:
+  \begin{itemize}
+  \item que el femení d'\empha{orfe} és \empha{òrfena} i el plural de \empha{llapis} és \empha{llapis}
+  \item que la traducció de \empha{coixí} (masc.) és \empha{almohada} (fem.)
+  \item que la forma que pren \empha{en}  davant de topònim és \empha{a}
+  \item que \empha{Dénia}, \empha{Olot}\ldots són topònims (i \empha{Toni} no)
+  \item que cal llevar la preposició \empha{de} davant \empha{que} en català
+  \item que en una seqüència \textbf{det--subst--adj}, si el substantiu canvia de gènere en traduir, cal canviar el del determinant i l'adjectiu però només si l'adjectiu concordava ja amb el substantiu\ldots
+  \end{itemize}
+Els sistemes estadístics tenen altres dificultats (arreplegar corpus representatius, \emph{netejar-los}, alinear-los\ldots).
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Avaluació de la TA}
+
+\begin{frame}
+  \frametitle{Avaluació de la traducció automàtica /1}
+
+  \begin{itemize}
+  \item   L'avaluació de la TA és encara un tema obert i controvertit per als
+  especialistes:
+  \begin{itemize}
+  \item Com que l'avaluació humana és molt costosa (com veurem) hi ha
+     mesures d'avaluació automàtica que comparen l'eixida
+    del sistema amb un o més textos de referència.
+  \item La capacitat d'aquestes mesures per a predir la utilitat de la
+    TA en aplicacions concretes és encara molt limitada.
+  \end{itemize}
+  \item   Al mateix temps, és un tema sobre el qual molta gent inexperta
+  s'aventura a donar opinions, normalment excessivament optimistes o
+  excessivament pessimistes.
+  \item   En general se sol oblidar que cal avaluar pensant en un \textbf{propòsit}.
+  \item   Imaginem-nos una aplicació concreta i veurem per què no és gens fàcil.
+  \end{itemize}
+
+
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{ Avaluació de la traducció automàtica /2}
+{
+{Volem avaluar \empha{l'adopció} d'un sistema de traducció
+  automàtica per a la \empha{disseminació} (publicació).}
+\begin{itemize}
+\item Les traduccions en brut s'hauran de \empha{posteditar} (corregir): com
+  menys correccions, més \empha{qualitat}: millor.
+\item D'acord: com ho avaluem?
+\end{itemize}
+
+
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{ Avaluació de la traducció automàtica /3}
+{
+{Per avaluar la \empha{qualitat}, cal:}
+\begin{itemize}\itemsep 0ex
+{\item elegir una mostra suficient de textos representatius,}
+{\item traduir-la automàticament,}
+{\item i comptar la quantitat de correcció \empha{mínima} necessària per
+  a fer que la traducció siga \empha{adequada al propòsit previst}.}
+\end{itemize}
+{Sembla senzill, però...}
+
+
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{ Avaluació de la traducció automàtica /4}
+{
+{...no ho és gens!}
+\begin{itemize}\itemsep 0ex
+{\item és difícil elegir prou text representatiu per endavant;}
+{\item la noció d'\empha{adequació} és de vegades difícil d'especificar:}
+{\item és difícil fer el \empha{mínim} de correccions (cal buscar
+  traduccions adequades que se n'obtinguen amb poques correccions);}
+{\item tot el procés és molt costós (temps de correcció).}
+\end{itemize}
+
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{ Avaluació de la traducció automàtica /5}
+{
+{Però la qualitat dels textos traduïts en brut no ho és tot!}
+
+{Fem un \textbf{pressupost}: si adoptem la traducció automàtica,}
+
+{d'una banda, ens estalviem els costos de traducció humana,}
+
+{però tenim despeses noves:}
+
+\begin{itemize}\itemsep 0ex
+{\item despeses de \empha{funcionament} i}
+{\item despeses de \empha{formació} (s'ha d'aprendre a usar una nova
+  tecnologia)} 
+\end{itemize}
+
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{ Avaluació de la traducció automàtica /6}
+{
+{Despeses de funcionament:}
+\begin{itemize}\itemsep 0ex
+  {\item \textbf{Cost del sistema de TA} (cost efectiu per mot):
+    amortització (sistema en propietat), cost per mot (sistema llogat), servei
+    tècnic i manteniment, costos de migració (adaptació de programes,
+    adquisició de sistemes), i (no oblidem) el cost d'avaluació!}
+  {\item \textbf{Cost de preedició i preparació:} potser cal preparar i 
+    \emph{preeditar} els textos i això ho ha de fer algú, cobrant.}   {\item
+      \textbf{Cost de postedició}: depén de la \empha{qualitat}; pot baixar amb
+      la formació; depén de com paguem als posteditors (per mot, per temps),
+      etc.}
+\end{itemize}
+
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{ Avaluació de la traducció automàtica /7}
+{
+{Despeses de formació:}
+\begin{itemize}\itemsep 0ex
+  {\item \textbf{Formació en ús del programa de TA}: ús pròpiament dit,
+    configuració i manteniment; ús de nou programari associat.}  
+  
+  {\item \textbf{Formació en postedició:}}
+    \begin{itemize}\itemsep 0ex
+    {\item coneixement del programa de TA
+    (errors típics);}
+    {\item tècniques de correcció, ús avançat del processador de textos,
+    macroinstruccions, substitució de patrons, etc.}
+    \end{itemize}
+\end{itemize}
+}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{ Avaluació de la traducció automàtica /8}
+
+{
+  \begin{itemize}
+  \item {I potser ens hem deixat encara alguna cosa!}
+\pause
+
+\item {Avaluar la traducció automàtica no és gens fàcil.}
+\pause
+
+\item {La lliçò? Desconfieu de les primeres impressions.}
+  \end{itemize}
+
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{TA per al català}
+\begin{frame}
+  \frametitle{Traducció automàtica per al català/1}
+%  \textbf{[un recompte del que hi ha]}
+Hi ha bastants sistemes de TA per al català:
+\begin{itemize}
+\item \textbf{SALT} (v. 4.0), de la Generalitat Valenciana
+  (\Pair{es}{ca}): instal·lable en Linux, Windows i Mac i accessible
+  en línia (p.ex. \empha{Las Provincias}): gratuït (no lliure), gran
+  cobertura lèxica, concebut per aprendre valencià.
+  \begin{itemize}
+  \item \url{http://www.edu.gva.es/polin/val/salt/apolin_salt.htm}
+  \end{itemize}
+\item \textbf{interNOSTRUM.com}, CAM/Universitat d'Alacant (\Pair{es}{ca}): en línia, molt usat en Internet, però ja no es manté.
+  \begin{itemize}
+  \item \url{http://www.internostrum.com}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Traducció automàtica per al català/2}
+
+Més sistemes:
+\begin{itemize}
+\item \textbf{Apertium.org} (\Pair{es}{ca}, \Pair{en}{ca}, \Pair{fr}{ca}, \Pair{pt}{ca}, \Pair{ca}{oc},  \pair{ca}{eo}): hereu d'\empha{interNOSTRUM.com}, en línia i descarregable, lliure/de codi font obert (l'explicaré més avall).
+  \begin{itemize}
+  \item \url{http://www.apertium.org}
+  \end{itemize}
+\item \textbf{Lucy Software} (\Pair{es}{ca}, \Pair{en}{ca}, \Pair{fr}{ca}, \Pair{ca}{de}, \pair{ca}{oc}): comercial, es pot provar en línia (abans \empha{Incyta}, \empha{Comprendium}, \empha{Translendium}\ldots).
+  \begin{itemize}
+  \item \url{http://www.lucysoftware.com/catala/inici/}
+  \end{itemize}
+\item \textbf{Automatic Trans} (\Pair{es}{ca}, \Pair{eu}{ca}, \Pair{gl}{ca}, \Pair{pt}{ca}): comercial, grans clients, relacionat amb l'usat cada dia a \empha{El Periódico de Catalunya}.
+  \begin{itemize}
+  \item \url{http://www.cat.automatictrans.es/}
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+\begin{frame}
+  \frametitle{Traducció automàtica per al català/2}
+
+Més sistemes:
+\begin{itemize}
+\item \textbf{SisHiTra} (\Pair{es}{ca}), UPV: ``Sistema Híbrid de Traducció'' que combina regles lingüístiques amb models estadístics, resultats molt interessants.
+  \begin{itemize}
+  \item \url{http://sishitra.iti.upv.es/}
+  \end{itemize}
+\item \textbf{Google Translate} (de \texttt{ca} a més de 50 llengües): sistema estadístic de la companyia Google.
+  \begin{itemize}
+  \item \url{http://translate.google.com}
+  \end{itemize}
+\item \textbf{Bing Translator} (de \texttt{ca} a més de 20 llengües): sistema estadístic de la companyia Microsoft.
+  \begin{itemize}
+  \item \url{http://www.microsofttranslator.com/}
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Traducció automàtica per al català /4}
+
+\textbf{Quin és el millor sistema?}
+
+Consell: abans de prendre una decisió, proveu-los tots, tenint en compte
+\begin{itemize}
+\item la qualitat de la traducció per al vostre propòsit
+\item el preu
+\item possibles limitacions a la grandària o el format dels textos
+\item si preserven o no el format del text, etc.
+\end{itemize}
+Recordeu el que hem discutit abans quant a l'avaluació!
+\end{frame}
+
+
+\section[Traducció automàtica lliure]{TA lliure o de codi font obert}
+
+
+\begin{frame}
+\frametitle{Què és el programari lliure o de codi font obert?}
+El programari és \empha{lliure} (Free Software Foundation, \url{www.fsf.org}) quan:
+\begin{itemize}
+\item[0] hom es lliure d'usar el programa per a qualsevol propòsit
+\item[1] hom pot estudiar com funciona el programa, i adaptar-lo a les seues necessitats
+\item[2] hom pot distribuir còpies i ajudar així el veí
+\item[3] hom pot millorar el programa i fer públiques les millores als altres, de manera que tota la comunitat se'n beneficie
+\end{itemize}
+Perquè les condicions 1 i 3 es complisquen, s'ha de tenir accés al codi font (tal com l'ha escrit el programador). Per això se'n diu també \empha{programari de codi font obert} (Open Source Initiative, \url{www.opensource.org}).
+\end{frame}
+
+%\subsection*{Programari de traducció automàtica: obert o tancat?}
+
+\begin{frame}
+\frametitle{Peculiaritats del programari de traducció automàtica}
+\begin{itemize}
+\item La traducció automàtica (TA) és especial: depén fortament de l'existència de dades. Hi ha tres components en qualsevol sistema de TA:\footnote{TA ``basada en regles''; la TA ``basada en corpus'' té requisits anàlegs}
+  \begin{itemize} 
+  \item El \empha{motor} (el programa pròpiament dit)
+  \item Les \empha{dades lingüístiques} (diccionaris, regles)
+  \item Les \empha{eines} necessàries per a mantenir aquestes dades i convertir-les al format usat pel \empha{motor}
+  \end{itemize}
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{La traducció automàtica comercial, normalment de codi font tancat}
+  \begin{itemize}
+  \item Els sistemes comercials usen tecnologies \empha{privatives} o
+    \empha{de propietat} (\empha{proprietary}) que no es revelen (el fabricant
+    les percep com un avantatge competitiu fonamental)
+  \item Típicament, només s'hi permet la modificació parcial (\empha{personalització}) de les dades lingüístiques.
+  \item Que un sistema es puga usar a Internet no vol dir que siga lliure o de codi font obert (versions de prova, sistemes no comercials).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Traducció automàtica lliure o de codi font obert}
+Perquè la TA siga lliure o de codi font obert, tant   
+\begin{itemize}
+\item el motor, 
+\item les dades, 
+\item com les ferramentes 
+\end{itemize}
+han de ser lliures o de codi font obert.
+\end{frame}
+
+\begin{frame}
+\frametitle{Avantatges de la traducció automàtica lliure o de codi font obert}
+\begin{itemize}
+\item L'ús de sistemes de TA lliures o de codi font obert té
+  avantatges específics sobre els sistemes comercials de codi font
+  tancat.  Destaquem-ne dos:
+ \begin{itemize}
+ \item \empha{Augmenta la perícia} (\empha{expertise}, coneixement) de
+   les comunitats lingüístiques implicades i \empha{els recursos
+     lingüístics} disponibles per a elles (fixació, codificació i
+   aplicació del coneixement), i els dissemina molt eficientment.
+ \item \empha{Augmenta la independència} respecte d'un proveïdor
+   comercial de traducció automàtica tancada (o d'altres tecnologies
+   lingüístiques).
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Reptes de la traducció automàtica lliure o de codi font
+    obert} Per a poder gaudir d'aquests avantatges, les comunitats
+  lingüístiques implicades en la creació d'un nou sistema de TA han de
+  fer front a reptes com :
+  \begin{itemize}
+  \item La neutralització d'actituds \empha{tecnofòbiques} (!)
+  \item L'organització del desenvolupament comunitari
+  \item L'\empha{elicitació} del coneixement lingüístic
+  \item L'estandardització i documentació dels formats de les dades lingüístiques
+  \item L'assoliment de la modularitat en  programes i dades.
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+\section{Apertium: un sistema de TA lliure/de codi font obert}
+
+%\subsection*{Antecedents i fonaments}
+\begin{frame}
+ \frametitle{Antecedents} 
+
+ Apertium està basat en les tecnologies creades pel grup Transducens
+ de la Universitat d'Alacant durant el desenvolupament de dos sistemes
+ existents:
+ 
+\begin{itemize}
+ 
+\item \textbf{interNOSTRUM} (\texttt{interNOSTRUM.com},
+  \texttt{es}\(\leftrightarrow\)\texttt{ca}%\footnote{\scriptsize{La llengua amb codi ISO-639 \texttt{ca}, parlada a Xàtiva, Palma, Olot, Perpinyà\ldots, és coneguda com a \empha{català}, \empha{valencià}, \empha{mallorquí}, etc. i la immensa majoria dels qui l'escriuen bé usen bàsicament el mateix estàndard.}})
+ 
+\item \textbf{Tradutor Universia} (\texttt{tradutor.universia.net},
+  \texttt{es}\(\leftrightarrow\)\texttt{pt})
+ 
+\end{itemize}
+
+Aquestes tecnologies, inicialment dissenyades per a parells de
+llengües estretament emparentades (com les romàniques!), han estat
+esteses per a tractar parells de llengües més allunyats.
+
+\end{frame}
+
+%\subsection*{Fonaments}
+
+\begin{frame}
+\frametitle{Fonaments /1}
+
+Per a generar traduccions que siguen: 
+
+\begin{itemize}
+
+\item raonablement intel·ligibles i
+\item fàcils de corregir (posteditar)
+\end{itemize}
+entre llengües estretament emparentades com l'espanyol (\texttt{es}) i
+el català (\texttt{ca}) o el portugués (\texttt{pt}), etc., només cal
+millorar la traducció \empha{mot per mot} amb algunes operacions.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Fonaments /2}
+
+Millores sobre la traducció mot per mot: 
+\begin{itemize}
+\item processament lèxic robust (incloent-hi unitats lèxiques multi-mot)
+  \begin{center}
+    (es) \textit{echar de menos} \(\to\) (ca) \sout{\textit{tirar de menys}} \textit{trobar a faltar}
+  \end{center}
+\item desambiguació lèxica categorial (\empha{part-of-speech tagging})
+  \begin{center}
+    (es) \textit{amigas como ella} \(\to\) (ca) \textit{amigues \sout{menge} \textbf{com} ella} 
+  \end{center}
+\item processament estructural local basat en regles simples i ben formulades per a transformacions estructurals freqüents (reordenació, concordança):
+  \begin{center}
+    (es) \textit{un valle seco} \(\to\) (ca) \textit{\sout{un} \textbf{una} vall \sout{sec} \textbf{seca}}
+  \end{center}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Fonaments /3}
+Per a parells de llengües més difícils, no tan 
+relacionats: 
+\begin{itemize}
+\item Hauria de ser possible estendre aquest model senzill.
+\item Hauria de ser possible generalitzar-ne els conceptes de manera que la complexitat es mantinga tan baixa com siga possible.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Fonaments /4}
+  
+\begin{itemize}
+  
+\item Hauria de ser possible generar un sistema complet de traducció
+  automàtica a partir de dades lingüístiques (diccionaris monolingües
+  i bilingües, regles gramaticals), especificades de manera
+  \textbf{declarativa}.
+\item Aquestes dades: 
+\begin{itemize}
+\item regles (independents de la llengua) per a tractar formats de text
+\item especificació del desambiguador lèxic categorial
+\item diccionaris morfològics i bilingües i diccionaris de regles de transformació ortogràfica
+\item regles de transferència estructural
+\end{itemize}
+haurien d'estar en un format interoperable  $\Rightarrow$ \textbf{XML}.
+  
+\end{itemize}
+
+\end{frame}
+\begin{frame}
+  \frametitle{Fonaments /5}
+  
+\begin{itemize}
+  
+\item Hauria de ser possible tenir un motor de traducció únic (independent de la llengua) que llegiria dades específiques per a cada parell de llengües
+  (``separació d'algorismes i dades'').
+\item Les dades lingüístiques del parell de llengües haurien de ser preprocessades de manera que el sistema siga ràpid ($>$10,000 mots per segon) i compacte; per exemple, les transformacions lèxiques es farien amb transductors d'estats finits
+  (TEFs).
+\end{itemize}
+
+\end{frame}
+\begin{frame}
+  \frametitle{Fonaments /6}
+  
+  Raons per al desenvolupament d'Apertium com a programari lliure o de codi font obert:
+\begin{itemize}
+\item Donar a tothom accés lliure i il·limitat a les millors tecnologies possibles de traducció automàtica.
+\item Establir una plataforma modular, documentada i oberta per a la traducció automàtica de transferència superficial i per a altres tasques de processament automàtic de la llengua.
+\item Afavorir l'intercanvi i la reutilització de les dades lingüístiques existents.
+\item Facilitar la integració amb altres tecnologies lliures o de codi font obert.
+\end{itemize}
+
+\end{frame}
+\begin{frame}
+  \frametitle{Fonaments /7}
+  
+  Més raons per al desenvolupament d'Apertium com a programari lliure
+  o de codi font obert:
+
+\begin{itemize}
+\item Beneficiar-se del desenvolupament col·laboratiu 
+  \begin{itemize}
+  \item del motor de traducció i de les eines
+  \item de dades per a parells de llengües existents o nous
+  \end{itemize}
+per part de la indústria, de les universitats o d'organitzacions de suport de llengües menors.
+\item Promoure el canvi de model de negoci en traducció automàtica,
+  de \empha{basat en llicències} a \empha{basat en serveis}.
+\item Garantir radicalment la reproducibilitat de la recerca en TA.
+\item Perquè no té sentit usar diners públics per a desenvolupar
+  programari no lliure i de codi font tancat.
+\end{itemize}
+
+\end{frame}
+
+%\subsection*{La plataforma Apertium}
+\begin{frame}
+  \frametitle{La plataforma Apertium} 
+Apertium és una plataforma de traducció automàtica de codi obert (\url{http://www.apertium.org}) que proporciona:
+\begin{enumerate}
+\item Un \textbf{motor} de traducció automàtica, basat en transferència sintàctica superficial, amb:
+  \begin{itemize}
+  \item gestió de formats de text
+  \item processament lèxic basat en estats finits
+  \item transferència sintàctica superficial basada en reconeixement de patrons basat en estats finits
+  \end{itemize}
+\item \textbf{Dades lingüístiques} en formats XML ben especificats per un nombre creixent de parells de llengües
+\item \textbf{Compiladors} per a passar les dades a la forma compacta i ràpida usada pel motor i programari per a aprendre regles de desambiguació o de transferència estructural.
+\end{enumerate}
+\end{frame}
+
+%subsection*{El motor d'Apertium}
+\begin{frame}
+  \frametitle{El motor d'Apertium/1}
+{\scriptsize
+  \begin{tabular}{cccccc}
+    \textbf{Text SL}$\to$ & \framebox{Desformatador} & & \\
+     & $\downarrow$        & & \\
+     & \framebox{Analitzador morfològic} & & [$\gets$TEF] \\
+     & $\downarrow$        & & \\
+     & \framebox{Desambiguador categorial} & & [$\gets$TEF+estad.] \\
+     & $\downarrow$        & & \\
+          {}[regles$\to$]      & \framebox{Transferència estructural} & $\leftrightarrow$ \framebox{Transferència lèxica} &[$\gets$TEF] \\
+     & $\downarrow$        & & \\ 
+     & \framebox{Generador morfològic} & & [$\gets$TEF]   \\
+     & $\downarrow$        & & \\
+      & \framebox{Post-generador} & & [$\gets$TEF] \\
+     & $\downarrow$        & & \\
+      & \framebox{Reformatador} & $\to$\textbf{text LM} \\
+  \end{tabular}
+}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{El motor d'Apertium/2}
+  Comunicació entre els mòduls: \textbf{text} legible (\empha{canonades} o \empha{pipelines} d'Unix).
+
+Avantatges:
+\begin{itemize}
+  
+\item Simplifica la diagnosi i la depuració d'errors (examinant
+  l'eixida de cada mòdul)
+\item Permet la modificació de dades entre dos mòduls, usant, per
+  exemple, programes més menuts (anomenats en Unix \empha{filtres})
+\item Facilita la inserció de mòduls alternatius (interessant per a la recerca i el desenvolupament)
+\end{itemize}
+
+\end{frame}
+
+%\subsection*{Dades lingüístiques}
+
+\begin{frame}
+\frametitle{Dades lingüístiques}
+\begin{itemize}
+\item Apertium acull el desenvolupament de dades per a un gran nombre de parells de llengües,
+\item  amb \empha{èmfasi especial} sobre les \empha{llengües romàniques}, 
+\end{itemize}
+com veurem dins d'un moment.
+\end{frame}
+
+
+%\subsection*{Finançament}
+
+\begin{frame}
+\frametitle{Finançament}
+Finançat per: 
+\begin{itemize}
+\item Ministeris d'Indústria, Turisme i Comerç, d'Educació i Ciència i  de Ciència i Tecnologia d'Espanya.
+\item Secretaria de Telecomunicacions i Societat de la Informació de la Generalitat de Catalunya
+\item El Ministeri d'Assumptes Exteriors de Romania
+\item La Univ.\ d'Alacant i la Univ.\ Oberta de Catalunya
+\item La \textbf{Ofis ar Brezhoneg} (Oficina del Bretó)
+\item Beques del \empha{Google Summer of Code} (2009--2011, 9/any).
+\item Empreses: Prompsit Language Engineering, imaxin|software, Eleka
+  Ingeniaritza Linguistikoa, ABC Enciklopedioj, Eolaistriu   Technologies, etc.
+\item La Direcció General de Traducció de la Commissió Europea
+\end{itemize} 
+\end{frame}
+
+
+%\subsection*{Recerca i negocis amb Apertium}
+\begin{frame}
+  \frametitle{Recerca i negocis amb Apertium}
+  Apertium és ja una activa plataforma de recerca i de negocis:
+  \begin{itemize}
+  \item \textbf{Recerca:} >30 publicacions, 1 tesi doctoral, 4 tesis de màster
+  \item \textbf{Negocis:} empreses (Prompsit, Eleka, Imaxin|software, etc.) comercialitzen serveis a clients com ara Autodesk, la Generalitat de Catalunya, un dels bancs més importants d'Euskal Herria, el diari \empha{La Voz de Galicia}, etc.
+  \end{itemize}
+El model de desenvolupament lliure / de codi font obert crea una \textbf{comunitat} que connecta eficientment els \textbf{investigadors}, els \textbf{desenvolupadors}, els \textbf{comercialitzadors} i els \textbf{usuaris}.
+\end{frame}
+
+%\subsection*{La comunitat d'Apertium}
+\begin{frame}
+\frametitle{La comunitat d'Apertium/1}
+A més dels desenvolupadors originals (finançats), s'ha format una comunitat al voltant del projecte (instigada fonamentalment per Francis Tyers).
+\begin{itemize}
+\item Hi ha >100 desenvolupadors inscrits en
+  \texttt{sourceforge.net/projects/apertium/}, la majoria de fora del grup
+  original; el codi s'actualitza molt freqüentment (centenars
+  d'actualitzacions cada mes).
+\item Un \empha{wiki} mantingut col·lectivament documenta els components d'Apertium, mostra l'estat actual de desenvolupament i dóna consells per als desenvolupadors de dades lingüístiques o de programes.
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{La comunitat d'Apertium/2}
+\begin{itemize}
+
+\item Exemples d'eines i codi desenvolupat externament: 
+  \begin{itemize}
+  \item la interfície gràfica d'ús \texttt{apertium-tolk}, i l'eina de diagnòstic \texttt{apertium-view}
+   \item \empha{plugins} per a OpenOffice.org, per al missatger Pidgin (abans Gaim), per al gestor de continguts Wordpress, etc.
+   \item Una versió dels diccionaris bilingües per a mòbils i PDA (\texttt{tinylex})
+   \item Una aplicació per a subtítols (\texttt{apertium-subtitles})
+   \item Versions preliminars per a Windows
+  \end{itemize}
+\item Molts desenvolupadors es troben en el canal IRC \texttt{\#apertium} (de \texttt{freenode.net}).
+\item Els paquets estables estan disponibles en Debian GNU/Linux (i per tant, en Ubuntu Linux).
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Les llengües romàniques en Apertium}
+La majoria dels parells d'Apertium són amb llengües \textbf{romàniques} (i algunes ben menudes!)
+  \begin{tabular}{|lll|lll|}
+\hline
+\textbf{Parell}&\textbf{Versió}&\textbf{Data}&\textbf{Parell}&\textbf{Versió}&\textbf{Data}\\
+\hline
+    \pair{br}{\textbf{fr}}&0.4.0&07/02/2011&
+    \pair{\textbf{ca}}{eo}&0.9.1&04/07/2009\\
+    \Pair{en}{\textbf{ca}}&0.9.1&17/09/2010&
+    \Pair{en}{\textbf{es}}&0.7.1&23/02/2010\\
+    \Pair{en}{\textbf{gl}}&0.5.1&19/11/2008&
+    \pair{eu}{\textbf{es}}&0.3.1&24/04/2009\\
+    \Pair{\textbf{es}}{\textbf{an}}&0.1.0&26/09/2010&
+    \pair{\textbf{es}}{\textbf{ast}}&1.1.0&22/12/2010\\
+    \Pair{\textbf{es}}{\textbf{ca}}&1.2.0&15/10/2009&
+    \pair{\textbf{es}}{eo}&1.0&17/11/2009\\
+    \Pair{\textbf{es}}{\textbf{gl}}&1.0&04/10/2007&
+    \Pair{\textbf{es}}{\textbf{pt}}&1.1.0&10/06/2011\\
+    \Pair{\textbf{fr}}{\textbf{ca}}&1.0.2&12/03/2009&
+    \pair{\textbf{fr}}{eo}&0.9.0&14/02/2011\\
+    \Pair{\textbf{fr}}{\textbf{es}}&0.9.0&02/03/2009&
+    \pair{\textbf{it}}{\textbf{ca}}&0.1.0&13/01/2010\\
+    \Pair{\textbf{oc}}{\textbf{ca}}&1.0.5&21/07/2008&
+    \Pair{\textbf{oc}}{\textbf{es}}&1.0.5&21/07/2008\\
+    \Pair{\textbf{pt}}{\textbf{ca}}&0.8.1&04/07/2009&
+    \Pair{\textbf{pt}}{\textbf{gl}}&0.9.1&03/07/2009\\
+    \pair{\textbf{ro}}{\textbf{es}}&0.7&08/10/2007 \\
+\hline
+  \end{tabular}
+
+
+
+\end{frame}
+
+
+
+
+% \begin{frame}
+%   \frametitle{Apertium: un sistema de TA lliure/de codi font obert}
+%   \textbf{[Apertium en dues o tres transparències: què hi ha dins d'Apertium]}
+% \end{frame}
+
+\section{Memòries de traducció (bonus)}
+\begin{frame}
+\frametitle{Memòries de traducció/1}
+
+{
+{Els traductors (humans) han generat 
+\empha{moltíssimes traduccions}.}
+
+{Hi ha a l'abast \empha{nombrosos textos electrònics bilingües}
+  on la versió en un idioma  és una bona traducció de la versió en l'altre i
+  viceversa.}
+
+{No es podria \empha{aprofitar} aquest treball per 
+a traduir documents nous (\empha{reciclatge automàtic de 
+traduccions}?) $\to$ Alternativa a la traducció automàtica.}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{ Memòries de traducció /2}
+
+{
+
+{Per a aprofitar aquests \empha{bitextos} cal:}
+\begin{itemize}\setlength{\itemsep}{0pt}
+{\item \empha{Alinear-los} (indicar quines parts són 
+traducció de quines);}
+{\item \empha{Segmentar-los} en unitats de traducció (UT);}
+{\item \empha{Organitzar les UT} en una base de dades eficient.}
+\end{itemize}
+{Totes aquestes tasques, tan automàticament com 
+siga possible.}
+}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{ Memòries de traducció/3}
+
+Esquema del procés de \empha{segmentació} i d'\empha{alineament} d'un
+  parell de textos existent per a alimentar
+  una memòria de traducció.
+
+
+\small{
+$$
+\begin{array}{rcl}
+\mbox{\parbox{1.0cm}{\textsf{text esquerre $E$}}} &\to \mbox{\framebox{\parbox{2.0cm}{\textsf{segmentació}}}} 
+\to \\
+\mbox{\parbox{1.0cm}{\textsf{text dret $D$}}} &\to \mbox{\framebox{\parbox{2.0cm}{\textsf{segmentació}}}} 
+\to \\
+\end{array}
+%\right.
+\mbox{\framebox{\parbox{1.7cm}{\textsf{alineador- corrector assistit}}}}
+\to \mbox{\parbox{1.2cm}{\textsf{UT} $(e_1,d_1)$, $(e_2,d_2)$, \ldots}} \to \mbox{\framebox{\parbox{1.4cm}{\textsf{Memòria de traducció}}}}
+$$
+}
+
+
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{ Memòries de traducció/4}
+{
+{Per a traduir textos nous cal:}
+\begin{itemize}\setlength{\itemsep}{0pt}
+{\item \empha{Segmentar-los} en unitats que puguen 
+correspondre amb les UT existents}
+{\item \empha{Substituir} els segments trobats per les 
+traduccions corresponents.}
+\end{itemize}
+{Aquest és el fonament de les \empha{memòries de 
+traducció}.}
+
+}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{ Memòries de traducció/5}
+
+\textbf{Modalitat de pretraducció:}
+
+Esquema del procés de \empha{pretraducció} d'un nou text esquerre $E'$
+usant una memòria de traducció.
+
+$$
+\begin{array}{rcl}
+\mbox{\parbox{1.3cm}{\textsf{text esquerre $E'$}}} \to
+\mbox{\framebox{\textsf{segmentació}}} \to &
+\mbox{\framebox{\textsf{pretraducció}}} & \to \mbox{\parbox{2.5cm}{\textsf{text dret
+    pretraduït i segmentat (per a editar)}}} \\
+& \uparrow \downarrow \mbox{\textsf{UT}}& \\[1cm]
+& \mbox{\framebox{\parbox{2.2cm}{\textsf{Memòria de traducció}}}} & \\
+\end{array}
+$$
+\end{frame}
+\begin{frame}
+
+\frametitle{ Memòries de traducció/5}
+
+\textbf{Modalitat interactiva:}
+%\textbf{[completar]}
+
+Esquema del procés de \empha{traducció interactiva} d'un nou text esquerre $E'$
+usant una memòria de traducció.
+
+$$
+\begin{array}{rcl}
+\mbox{\parbox{1.3cm}{\textsf{text esquerre $E'$}}} \to
+\mbox{\framebox{\textsf{segmentació}}} \to &
+\mbox{\framebox{\textsf{elecció (i edició)}}} & \to \mbox{\parbox{2.5cm}{\textsf{text dret \(D'\)
+    completat i segmentat}}} \\
+& \uparrow \downarrow \mbox{\textsf{UT}}& \\[1cm]
+& \mbox{\framebox{\parbox{2.2cm}{\textsf{Memòria de traducció}}}} & \\
+\end{array}
+$$
+\end{frame}
+
+\begin{frame}
+
+\frametitle{ Memòries de traducció/7}
+{
+{Alguns productes comercials (preus de 600 euros cap amunt):}
+\begin{itemize}\setlength{\itemsep}{0pt}
+{\item \empha{Déjà Vu} d'Atril (\texttt{http://www.atril.com}) }
+{\item \empha{Transit} de Star
+  (\texttt{http://www.star-group.net})}
+{\item \empha{SDL Trados} (\texttt{www.trados.com})}
+\end{itemize}
+{Solen contenir, a més de la \empha{memòria de traducció}, altres
+útils com ara \empha{bases de dades lèxiques} (``terminològiques''), etc.}
+
+Hi ha productes \empha{lliures o de codi font obert} com ara 
+  \begin{itemize}
+  \item \texttt{OmegaT} (\url{www.omegat.org})
+  \item \texttt{OpenTM2} (\url{www.opentm2.org})
+  \end{itemize}
+}
+
+\end{frame}
+
+
+\begin{frame}
+
+\frametitle{ Memòries de traducció/7}
+{
+{\empha{Quan funcionen bé} les memòries de 
+traducció?}
+\begin{itemize}\setlength{\itemsep}{0pt}
+{\item Quan tenim moltes traduccions alineades en la memòria}
+{\item Quan els tipus de textos a traduir són 
+\empha{molt repetitius}}
+{\item Quan la \empha{terminologia} i la \empha{fraseologia} són 
+\empha{estables} en la memòria}
+\end{itemize}
+{Però:}
+\begin{itemize}\setlength{\itemsep}{0pt}
+{\item  sempre cal revisar la pretraducció}
+{\item A canvi: la pretraducció revisada es pot 
+afegir ja a la memòria de traducció per usar-la en el futur.}
+\end{itemize}
+}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{ Memòries de traducció/8}
+{
+{Sobre la segmentació:}
+\begin{itemize}\setlength{\itemsep}{0pt}
+{\item Els programes de MT segmenten els textos en 
+\empha{``oracions''} usant la \empha{puntuació} i el \empha{format}.}
+{\item A canvi, troben en la memòria segments \empha{aproximats} a 
+més dels idèntics (i produeixen traduccions aproximades).}
+{\item Hi ha (des de 1998) un format estàndard internacional
+de MT independent del programa: TMX 
+(Translation Memory eXchange), que permet l'intercanvi de memòries
+entre equips de traducció.}
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}
+
+  © 2011 Universitat d'Alacant
+
+  © 2011 Mikel L. Forcada
+
+Aquest treball es pot distribuir lliurement en els termes de qualsevol d'aquestes dues llicències:
+\begin{itemize}
+\item la llicència Creative Commons
+  Attribution--Share Alike:
+  \url{http://creativecommons.org/licenses/by-sa/3.0/deed.ca} 
+\item la llicència GNU GPL v. 3.0: \url{http://www.gnu.org/licenses/gpl.html}
+\end{itemize}
+Per a obtenir els fonts \LaTeX{}, només cal escriure a:\texttt{mlf@ua.es}
+
+
+\end{frame}
+
+
+\end{document}

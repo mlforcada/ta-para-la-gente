@@ -16,7 +16,7 @@
  \frametitle{Traducció automàtica estadística}
 
 
-\usepackage[english]{babel}
+\usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{times}
 \usepackage{url}
@@ -27,7 +27,7 @@
 \newcommand{\Pair}[2]{\texttt{#1}\(\leftrightarrow\)\texttt{#2}}
 \newcommand{\pair}[2]{\texttt{#1}\(\to\)\texttt{#2}}
 
-\title[Traducció automàtica]{Traducció automàtica}
+\title[Traducción automática para la gente]{Traducción automática para la gente: no sólo para profesionales de la traducción}
 
 \author[M.L.\ Forcada]{Mikel L.\ Forcada\inst{1,2}}
 
@@ -37,7 +37,7 @@ Universitat d'Alacant,  03071 Alacant \\[0.2cm]
 \inst{2}Prompsit Language Engineering, S.L., \\ Edifici Quorum III, Av. Universitat s/n, 03202 Elx}
 
 
-\date[06/07/2011]{La linguística i les seues aplicacions en la societat\\ Castelló, 6 de juliol de 2011}
+\date[15/11/2017]{Torrevieja, 15 de noviembre de 2015}
 
 
 \newcommand{\tu}[2]{(\texttt{``#1''},\texttt{``#2''})}
@@ -78,26 +78,26 @@ Universitat d'Alacant,  03071 Alacant \\[0.2cm]
 
 
 %%%%%%%%%%%%%%%%%%%
-\section{Què és la traducció automàtica (TA)?}
+\section{¿Qué es la traducción automàtica (TA)?}
 \begin{frame}
-\frametitle{ Què és la traducció automàtica (TA)? /1}
+\frametitle{¿Qué es la traducción automática (TA)? /1}
 
 {
-{La \empha{traducció}, \ldots }
+{La \empha{traducción}, \ldots }
 \pause
 
-{\ldots mitjançant un \empha{sistema informàtic} \ldots}
+{\ldots mediante un \empha{sistema informático} \ldots}
 \pause
 
-{\ldots (ordinador(s) +
-  programes) \ldots}
+{\ldots (ordenador(es) +
+  programas) \ldots}
 \pause
 
-{\ldots de \empha{textos informatitzats} en la \empha{llengua
+{\ldots de \empha{textos informatizados} en la \empha{lengua
     origen} (LO)\ldots}
 \pause
 
-{\ldots a \empha{textos informatitzats} en la \empha{llengua meta}
+{\ldots a \empha{textos informatizados} en la \empha{lengua meta}
   (LM).}
 
 }
@@ -106,54 +106,63 @@ Universitat d'Alacant,  03071 Alacant \\[0.2cm]
 %%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{ Què és la traducció automàtica (TA)? /2}
+\frametitle{¿Què es la traducción automática (TA)? /2}
 
-Esquemàticament:
+Esquemáticamente:
 
 \begin{center}
 \begin{tabular}{ccccc}
-\textbf{Text LO} & $\to$ & \framebox{\parbox{3.5cm}{Sistema de traducció
-    automàtica}} & $\to$ & \parbox{2.0cm}{\textbf{Text LM} (en brut)} \\ 
+\textbf{Texto LO} & $\to$ & \framebox{\parbox{3.5cm}{Sistema de traducción
+    automática}} & $\to$ & \parbox{2.0cm}{\textbf{Texto LM} (en bruto)} \\ 
 \end{tabular}
 \end{center}
 
 \end{frame}
+
+
 \begin{frame}
-  \frametitle{Què \textbf{no} és?}
+\frametitle{¿Què es la traducción automática (TA)? /3}
 
-  Hi ha altres tecnologies de traducció que no són traducció
-  automàtica. 
+La salida que producen los sistemas de traducción automática:
+\begin{itemize}
+\item no és como un producto profesional de traducción;
+\item normalmente no se puede publicar como está (pero\ldots)
+\end{itemize}
+¿Y cómo se usa?
 
-  Destaquen els sistemes de \textbf{traducció assistida per ordinador} basats en \textbf{memòries de traducció}.
-
-  En parlarem una miqueta al final de la lliçó si tenim temps!.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%
 
-\section{Aplicacions de la TA}
+\section{Aplicaciones de la TA}
 \begin{frame}
-\frametitle{ Aplicacions de la TA /1}
+\frametitle{Aplicaciones de la TA /1}
 
 
-Dos grans grups:
+Dos grandes grupos:
 \begin{itemize} 
 
-\item\empha{Assimilació:} traducció \textbf{efímera},
-    idealment \textbf{instantània}, per a la revisió o la
-    \textbf{comprensió} de documents en una altra llengua que no
-    coneixem. P.ex., \empha{``navegació traduïda'' per internet}, \empha{xat
-      (\textit{chat}) multilingüe}, etc.
+\item\empha{Diseminación:} traducción \textbf{permanente}, idealmente
+  \textbf{con pocos errores}, para su  \textbf{publicación}. P.ej.,
+  producción de \textbf{borradores} para corregir
+  (\textit{posteditar}).
+\begin{itemize}
+\item Para \textbf{profesionales de la traducción}.
+\end{itemize}
 
-  \item\empha{Disseminació:} traducció \textbf{permanent}, idealment
-    \textbf{amb pocs errors}, per a la \textbf{publicació}. P.ex.,
-    producció d'\textbf{esborranys} per a corregir (\textit{posteditar}).
+\item\empha{Asimilación:} traducción \textbf{efímera}, idealmente
+  \textbf{instantánea}, para la revisión o la \textbf{comprensión} de
+  documentos en otra lengua que no conocemos. P.ej.,
+  \empha{``navegación traduïda'' por Internet}, \textit{chat}
+  multilingüe, etc.
+\item ¡Para \textbf{el resto de la gente}!
+
 \end{itemize}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Assimilació: un text en irlandés/1}
+  \frametitle{Asimilación: un texto en irlandés/1}
 
   \empha{Is ar an Oileán Fada a bhí mé féin agus m’fhear céile ag fanacht
   nuair a rinne muid an turas sin. Dúradh linn fanacht cois farraige
@@ -164,42 +173,33 @@ Dos grans grups:
   istigh d’uair an chloig, bhí an mhórsceir féin bainte amach againn
   agus ba dhochreidte na radhairc a chonaic muid os ár gcomhair.}
 \begin{itemize}
-\item Qui s'anima a dir de què va?
+\item El sistema de escritura del irlandés usa el mismo alfabeto del
+  español (de hecho, sólo una parte), pero\ldots
+\item ¿Alguien se anima a decir de qué va?
 
 \end{itemize}
   \end{frame}
-
 %%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Assimilació: traducció de Google Translate}
+  \frametitle{Asimilación: traducción de Google Translate}
 
-  \empha{És a Long Island i estava esperant al meu marit quan vam fer el
-  viatge. Ens van dir de quedar a la vora del mar a \textbf{díthrá} i va
-  aterrar passat el vaixell que ens portarà a bord. Petit grup va ser
-  en el viatge no havia van prendre l'avió més de deu en poc temps. No
-  hi ha una descripció de les escenes que vam veure en el viatge cap a
-  l'escull. En qüestió d'hores, l'escull que s'han llaurat va ser
-  increïble i les escenes que vam veure davant nostre.}
+  \empha{Yo y mi esposo estábamos esperando Long Island cuando hicimos ese viaje. Nos dijeron que nos quedáramos por mar en el momento del engaño y aterrizamos en el avión para abordarnos. El viaje fue muy pequeño ya que el avión no tomó más de diez en ningún momento. No hay descripción de las escenas que vimos en el viaje al mayor. En una hora, habíamos llegado a nuestro propio pozo y las escenas que vimos fueron increíbles.}
 \begin{itemize}
-\item El sistema no reconeix el mot \empha{díthrá}
+\item ¿Y ahora, alguien puede decir de qué va?
 \end{itemize}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Assimilació: el que volia dir (poc més o menys)}
+  \frametitle{Asimilación: lo que quería decir (poco más o menos)}
 
-\empha{Era a Long Island on m'estava amb al meu marit quan vam fer el
-  viatge. Ens van dir de quedar a la vora del mar a l'hora de la
-  \textbf{baixamar}, on va aterrar l'hidroavió que ens portaria a bord. Era un
-  petit grup, el del viatge, perquè no prenien aquell avió més de deu
-  persones en cap moment. No hi ha com descriure les escenes que vam
-  veure en el viatge cap a l'escull. En qüestió d'hores, havíem
-  abastat l'escull i van ser increïbles les vistes que vam veure
-  davant nostre.}
+\empha{\textbf{Fue en Long Island que mi esposo y yo} estábamos \textbf{hospedados} cuando hicimos ese viaje. Nos dijeron \textbf{que quedáramos a la orilla del} mar en el momento de \textbf{la bajamar, donde aterrizaría}  el \textbf{hidroavión} para \textbf{que lo abordáramos}. El \textbf{grupo era} muy pequeño ya que el avión no \textbf{podía llevar a} más de \textbf{diez personas en} ningún momento. No \textbf{se pueden describir} las escenas que vimos en el viaje al \textbf{arrecife}. En una hora, habíamos llegado \textbf{al propio arrecife} y las escenas que vimos fueron increíbles.}
 
+Errores extraños:
 \begin{itemize}
-\item \empha{dithrà} = \empha{baixamar}
+\item ¿Por qué el \empha{hidroavión} se convierte en un \empha{avión} normal?
+\item ¿\empha{arrecife}:  \empha{mayor} o \empha{pozo}?
+\item ¿\empha{bajamar}: \empha{engaño}?
 \end{itemize}
 
 \end{frame}
@@ -208,135 +208,94 @@ Dos grans grups:
 %%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{ Aplicacions de la TA /2}
+\frametitle{Aplicaciones de la TA /2}
 
-\empha{Postedició i preedició}: els professionals col·laboren amb el
-  sistema de TA en aplicacions de \textbf{disseminació}:
+\empha{Postedición y preedición}: los professionales colaboran con el
+  sistema de TA en aplicaciones de \textbf{diseminación}:
 \begin{itemize}
-\item\empha{Postedició:} correcció del text traduït en brut
-  per a fer-lo adequat al propòsit previst (de seguida veurem un exemple).
-\item Un pas més: \empha{preedició} o preparació del text per a evitar
-  lèxic o construccions que donen problemes de traducció coneguts amb un
-  sistema de traducció automàtica. 
+\item\empha{Postedición:} corrección del texto traducido en bruto para hacerlo adecuado al propósito previsto (en seguida veremos un ejemplo).
+\item Un paso más: \empha{preedición} o preparación del texto para evitar
+  léxico o construcciones que dan problemas de traducción conocidoscon un
+  sistema de traducción automática determinado. 
   \begin{itemize}
-  \item Interessant quan el mateix text original s'ha de traduir a moltes llengues meta (una preedició pot estalviar moltes postedicions).
+  \item Interesa si el mateix mismo original se tiene que traducir a muchas lenguas meta (una preedición puede ahorrar más de una postedición).
 
   \end{itemize}
 \end{itemize}
 
-  Conéixer bé \empha{com funciona} el sistema de TA ajuda molt en
-  ambdues tasques.
+  Los profesionales deben conocer \empha{cómo funciona} el sistema de TA para usarlo de manera eficiente en sus tareas.
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%
 
 
-\begin{frame}
-\frametitle{ Aplicacions de la TA /3}
-
-{ {Alternativa en cas de preedició repetitiva: \empha{llenguatge
-      controlat}.}
-\begin{itemize}\setlength{\itemsep}{0pt}
-{\item Els autors escriuen ja pensant en el tractament automatitzat
-  del text.}
-{\item S'eviten lèxic i construccions problemàtiques per al sistema de TA per minimitzar (no \empha{eliminar}) la postedició.
-  \begin{itemize}
-  \item (en) \empha{replace} \(\to\) (ca) \empha{substituir} (en: \empha{substitute}) o \empha{tornar a col·locar} (en: \empha{put back})?
-  \end{itemize}
-
-}
-{\item Consistència d'estil, comprensibilitat, mantenibilitat dels documents originals.}
-{\item Però els autors han de conéixer i aplicar el llenguatge controlat!}
-{\item Se'ls pot ajudar amb eines informàtiques.}
-\end{itemize}
-%\textbf{[transparències introducció progressiva?]}
-}
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-  \frametitle{Exemple de postedició: text original en portugués} 
+  \frametitle{Ejemplo de postedición: texto original en portugués} 
 
   \empha{Nova Iorque teve ontem uma noite de festa, após a aprovação
     durante a tarde (madrugada em Lisboa) pelo Senado estadual da lei
     que reconhece o direito ao casamento homossexual, por 33 votos
-    contra 29, após anos de falhanço nesta câmara-alta.  O \textbf{projecto} de
-    lei tinha até aqui sido aprovado quatro vezes pela Assembleia do
-    Estado, mas tinha sido sempre \textbf{rejeitada} pelo Senado de Nova
-    Iorque, que agora se torna no sexto \textbf{estados} dos EUA a permitir o
-    casamento entre pessoas do mesmo sexo.}
+    contra 29, após anos de falhanço nesta câmara-alta.  O
+    \underline{projecto} de lei tinha até aqui sido aprovado quatro
+    vezes pela Assembleia do Estado, mas tinha sido sempre
+    \textbf{rejeitada} pelo Senado de Nova Iorque, que agora se torna
+    no sexto \textbf{estados} dos EUA a permitir o casamento entre
+    pessoas do mesmo sexo.}
 
   \begin{itemize}
-  \item El text original te dues errades (en negreta).
+  \item El texto original tiene dos errores (en negrita).
   \end{itemize}
 
 \end{frame}
 
-\begin{frame}
-  \frametitle{Traducció en brut al valencià (apertium-pt-ca)}
 
-  \empha{Nova York va tenir ahir una nit de festa, *após l'aprovació
-    durant la tarda (matinada a Lisboa) pel *Senado *estadual de la
-    llei que reconeix el dret a les noces homosexuals, per 33 vots
-    contra 29, *após anys de fracàs en aquesta càmera-alta.  El
-    projecte de llei tenia fins a aquí estat aprovat quatre vegades
-    per l'Assemblea de l'Estat, però havia estat sempre rebutjada pel
-    *Senado de Nova York, que ara es fa en el sisè estats dels *EUA a
-    permetre les noces entre persones del mateix sexe.}
+
+\begin{frame}
+  \frametitle{Traducción en bruto al español (apertium-pt-es)}
+
+  \empha{Nueva York tuvo ayer una noche de fiesta, después de la
+    aprobación durante la tarde (madrugada en Lisboa) por Senado
+    estadual de la ley que reconoce el derecho a la boda homosexual,
+    por 33 votos contra 29, después de años de fracaso en esta
+    @câmara-alta.  El @projecto de ley tenía hasta aquí sido aprobado
+    cuatro veces por la @Assembleia del Estado, pero había sido
+    siempre rechazada por Senado de Nueva York, que ahora se hace en
+    el sexto estados de los EUA a permitir la boda entre personas del
+    mismo sexo.}
+
 
   \begin{itemize}
-  \item Els mots desconeguts pel sistema estan marcats amb un asterisc.
+  \item El sistema se ha \emph{atragantado} con algunas palabras que ha marcado con ``@''.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Text posteditat (postedició ràpida)}
+  \frametitle{Texto posteditado (postedición rápida)}
 
-  \empha{Nova York va \textbf{passar} ahir una nit de festa,
-    \textbf{després de} l'aprovació durant la \textbf{vesprada}
-    (matinada a \textbf{Castelló}) pel Senat \textbf{d'aquest estat}
-    de la llei que reconeix el dret \textbf{al matrimoni dels}
-    homosexuals, per 33 vots contra 29, \textbf{després d'}anys de
-    fracàs en aquesta \textbf{cambra} alta.  El projecte de llei
-    \textbf{havia} estat \textbf{fins ara} aprovat quatre vegades per
-    l'Assemblea de l'Estat, però havia estat sempre \textbf{rebutjat}
-    pel \textbf{Senat} de Nova York, que ara es \textbf{converteix} en
-    el sisè \textbf{estat} dels \textbf{EUA} a permetre \textbf{el
-      matrimoni} entre persones del mateix sexe.}
+  \empha{Nueva York tuvo ayer una noche de fiesta, después de la
+    aprobación durante la tarde (madrugada en \textbf{Torrevieja}) por
+    \textbf{el} Senado estadual de la ley que reconoce el derecho
+    \textbf{al matrimonio} homosexual, por 33 votos contra 29, después
+    de años de fracaso en esta \textbf{cámara alta}.  El
+    \textbf{proyecto} de ley \textbf{había sido hasta hora} aprobado
+    cuatro veces por la \textbf{Asamblea} del Estado, pero había sido
+    siempre \textbf{rechazado} por \textbf{el} Senado de Nueva York, que ahora
+    se \textbf{convierte} en el sexto \textbf{estado} de los
+    \textbf{EEUU en} permitir \textbf{bodas} entre personas del mismo
+    sexo.}
 
   \begin{itemize}
-  \item Els canvis s'indiquen amb negretes.
+  \item Los cambios se indican en negritas.
+  \item Algunos 
   \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%
 
 
-\begin{frame}
-\frametitle{ Aplicacions de la TA /4}
 
-{
-{En primera aproximació, la postedició és convenient quan 
-$$\textbf{cost}\left(\mbox{\begin{tabular}{c}traducció automàtica\\ +\\
-  postedició professional\end{tabular}}\right) < \textbf{cost}(\mbox{traducció professional}).  
-$$
-(la fórmula amaga molts detalls del \empha{cost}).
-}
-
-{Perquè la postedició siga eficient:}
-\begin{itemize}\setlength{\itemsep}{0pt}
-{\item no pot afectar a una gran part del text (máx. 20\%--30\%, si no, s'abandona i es comença des de zero)}
-{\item cal ser competent en la llengua meta $\to$ generar un
-  text genuí a partir del text en brut}
-{\item s'ha de tenir en compte el propòsit del text traduït}
-{\item cal conéixer el sistema de TA $\to$ reconéixer l'origen dels
-  errors, predir-ne el comportament}
-\end{itemize}
-}
-\end{frame}
-
-
-\section{Com funciona la TA?}
+\section{¿Cómo funciona la TA?}
 
 \begin{frame}
   \frametitle{Com funciona la TA? /1}

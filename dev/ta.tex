@@ -288,123 +288,72 @@ Errores extraños:
 
   \begin{itemize}
   \item Los cambios se indican en negritas.
-  \item Algunos 
+  \item Algunos errores provienen de errores en el texto original.
   \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%
-
-
 
 \section{¿Cómo funciona la TA?}
 
 \begin{frame}
-  \frametitle{Com funciona la TA? /1}
-Dues grans tecnologies: 
+  \frametitle{¿Cómo funciona la TA? /1}
+Dos grandes tecnologías: 
 \begin{itemize}
-\item la \textbf{traducció automàtica basada en regles (TABR)} i
-\item la \textbf{traducció automàtica basada en corpus (TABC)} 
+\item la \textbf{traducción automática basada en reglas (TABR)} i
+\item la \textbf{traducción automática basada en corpus (TABC)} 
 \end{itemize}
-Per descomptat, hi ha aproximacions \empha{híbrides}.
+Por supuesto hay híbridos.
 \end{frame}
 %%%%%%
 
 \begin{frame}
-  \frametitle{Com funciona la TA? /2}
+  \frametitle{¿Cómo funciona la TA? /2}
 
-La \textbf{traducció automàtica basada en regles (TABR)}
+La \textbf{traducción automàtica basada en reglas (TABR)}
   \begin{itemize}
-  \item aproximació dominant en productes comercials fins fa poc
-  \item experts compilen diccionaris, regles de traducció i escriuen programes que els apliquen
-  \item parlaré fonamentalment d'aquest tipus de TA
-  \item exemples: \empha{Systran}, \empha{Lucy}, \empha{Apertium}, \empha{Reverso}, etc.
+  \item aproximación dominante en productos comerciales hasta hace
+    unos doce años
+  \item personas expertas compilan diccionarios, reglas de traducción
+    y escriben programas que los aplican
+  \item Ejemplos: \empha{Lucy}, \empha{Apertium}.
   \end{itemize}
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{Com funciona la TA? /3}
-La \textbf{traducció automàtica basada en corpus (TABC)} (i, molt especialment, la \empha{traducció automàtica estadística}:
+  \frametitle{¿Cómo funciona la TA? /3}
+La \textbf{traducción automática basada en corpus (TABC)}:
   \begin{itemize}
-  \item és ara l'aproximació més puixant (l'''estat de la qüestió'')
-  \item els sistemes ``aprenen a traduir'' a partir d'enormes corpus de text bilingüe alineat oració a oració
-  \item el que aprenen són complexos models estadístics (diccionaris probabilístics de mots i segments més llargs, probabilitats de reordenaments, etc.)
-  \item exemple: \empha{Google Translate}
-  \item en parlarem una miqueta només, més avant.
+  \item es actualmente la aproximación más pujante (el ''estado de la
+    cuestión'')
+  \item los sistemas ``aprenden a traducir'' a partir de enormes
+    corpus de texto bilingüe alineado oración a oración
+  \item lo que aprenden són complejos modelos estadísticos o
+    ``neuronales'' (enseguida lo vemos un poco)
   \end{itemize}
 \end{frame}
 
+
+\section{Retos}
 \begin{frame}
-\frametitle{ Com funciona la TA? /4}
+\frametitle{Retos /1}
 
-\textbf{Primera aproximació} [!!]: Traduir textos és
-\empha{traduir oracions}.
-
-Traduir oracions suposa:
-
-{
-\begin{itemize}
-  {\item \empha{Construir una interpretació} (un
-    \empha{significat}) a partir de l'oració en LO.}  {\item
-  \empha{Construir una oració en LM} a partir de la interpretació.}
-\end{itemize}
-}
-\end{frame}
-
-\begin{frame}
-\frametitle{ Com funciona la TA? /5}
-
-\empha{Principi de composicionalitat [semàntica]}:
-
-
-{
-{La \textbf{interpretació d'una oració} es construeix \ldots}
-
-\pause
-
-{\ldots a partir de les \textbf{interpretacions dels
-    mots} \ldots}
-
-\pause
-{\begin{center}\textit{Escriuen \empha{cartes}} $\neq$ \textit{Escriuen \empha{articles}}\end{center}}
-
-\pause
-{\ldots \empha{component-les} seguint les agrupacions indicades 
-per l'\textbf{estructura sintàctica} de
-  l'oració.}
-\pause
-{\begin{center} \textit{Israel amenaça Palestina} $\neq$ \textit{Palestina amenaça Israel} \end{center}}
-\pause
-Això permet que puguem assignar interpretació a oracions que no hem sentit mai:
-
-\pause
-{\begin{center} \textit{Arranqueu el projector del sostre i llanceu-lo per la finestra!} \end{center}}
-
-}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Com funciona la TA? /6}
-
-Però alerta!  Les \textbf{oracions} poden ser \textbf{ambigües} (\'es
-a dir, tenir m\'es d'una interpretaci\'o):
+Pero ¡atención!  Les \textbf{oraciones} de un texto pueden ser
+\textbf{ambiguas} (es decir, tener más de una interpretación):
 
 \begin{itemize}
-\item perqu\`e els mots tenen m\'es d'una interpretaci\'{o}
-  (ambig\"uitat \empha{l\`exica})
+\item porque sus palabras tengan más de una interpretación (ambigüedad
+  \empha{léxica})
  
 
-\item perqu\`{e} l'oraci\'{o} t\'{e} m\'{e}s d'una possible an\`alisi
-  sint\`actica (ambig\"uitat \empha{sint\`actica})
+\item porque la oración tenga más de una posible estructura  (ambigüedad \empha{sintáctica})
 
-\item per ambdues coses alhora.
+\item o por las dos cosas.
 \end{itemize}
-(en veurem exemples més endavant)
+(enseguida vemos unos ejemplos)
 
-Elegir la interpretaci\'{o} correcta no \'es trivial per a un sistema
-  inform\`atic (normalment només pot usar part del \textbf{cotext}).
+Elegir la interpretación correcta no es trivial para un sistema
+informático (que sólo tiene acceso al texto mismo).
 
 %\textbf{[posar exemples ací?]}
 
@@ -414,148 +363,6 @@ Elegir la interpretaci\'{o} correcta no \'es trivial per a un sistema
 
 %%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-\frametitle{ Com funciona la TA? /7}
-
-Esquemàticament:
-
-{
-{
-\begin{center}
-\begin{tabular}{cccccc}
-\parbox{1.8cm}{Oració LO}
-& $\to$ 
-& interpretació 
-& $\to$ 
-& \parbox{1.8cm}{Oració LM} \\ 
-\end{tabular}
-\end{center}
-}
-
-{ En alguns sistemes de TA s'intenta representar directament les
-  \empha{interpretacions} amb una \empha{interlingua} (un llenguatge estructurat
-  artificial).}  }
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{ Com funciona la TA? /8}
-
- { {Però... els \textbf{traductors
-      professionals} realment necessiten \textbf{interpretar} o
-    comprendre \textbf{completament} una oració per a
-    traduir-la?}
-
-{
-\begin{center}
-  \textsl{``... interacciones independientes del espín en unidades de la
-  sección eficaz del neutrino de Dirac...''} $\to$ \\
-  \textsl{\empha{``... interaccions independents de l'espín en unitats de la secció
-  eficaç del neutrí de Dirac...''} (\textbf{traductora i física de partícules?})}
-\end{center}
-}
-{
-\begin{center}
-\textsl{``\ldots tornillos que unen el volante de inercia al árbol de levas}
- $\to$ \\
-\textsl{\empha{``\ldots caragols que uneixen el volant d'inèrcia a l'arbre
-de lleves \ldots''} (\textbf{traductora i enginyera mecànica?})}
-\end{center}
-} {No: \textbf{Transformen estructures} o patrons i
-\textbf{substitueixen el lèxic} (parant especial esment al
-terminològic).} 
-}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{ Com funciona la TA?  /9}
-
-{
-{Això permet fer la \textbf{segona aproximació} [!!], també anomenada \empha{aproximació de transferència}}
-\begin{itemize}\setlength{\itemsep}{0pt}
-{\item[] La majoria dels sistemes de TA \textbf{no construeixen
-    completament la interpretació}, \ldots}
-
-\pause
-{\item[]\ldots sinó que \textbf{transformen l'estructura sintàctica} de
-  l'oració en LO en una estructura sintàctica vàlida per a l'oració en
-  LM i\ldots}
-
-\pause
-{\item[]\ldots \textbf{substitueixen} els  mots de l'oració en LO per
-  equivalents adequats en LM\ldots }
-
-\pause
-{\item[]\ldots fent les dues operacions \textbf{bastant
-    independentment}.}
-\end{itemize}
-}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Com funciona la TA/10}
-Esquemàticament:
-\begin{small}
-\begin{center}
-\parbox{1.0cm}{Oració LO} $\to$
-\framebox{\parbox{0.8cm}{Anà\-lisi}} $\to$ 
-\parbox{1.0cm}{repre\-senta\-ció abs\-tracta LO} $\to$
-\framebox{\parbox{1.2cm}{Transfe\-rència}} $\to$
-\parbox{1.0cm}{repre\-senta\-ció abs\-tracta LM} $\to$
-\framebox{\parbox{0.8cm}{Gene\-ració}} $\to$
-\parbox{1.0cm}{Oració LM} 
-\end{center}
-  \end{small}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Com funciona la TA/11}
-
-  La tercera aproximació: arquitectura de transformació
-  (\empha{transformer}):
-
-  \begin{itemize}
-  \item Per a traduir entre llengües similars, no cal fer l'anàlisi sintàctica completa de l'oració.
-  \item Només es fa \empha{on cal}: anàlisi \empha{parcial} (la resta, mot a mot)
-    \begin{itemize}
-    \item Anàlisi morfològica: \empha{dit} \(\to\) \{\texttt{\textbf{dir}.verb.part.m.sg}, \texttt{\textbf{dit}.n.m.sg}\}
-    \item Desambiguació categorial: se n'elegeix una (\empha{has dit} \(\not\to\) \empha{*has dedo})
-    \item Identificació de patrons locals on caldrà establir la
-      concordança local, fer petits reordenaments (p.ex. \textbf{n--adj}: \empha{coixí groc} \(\not\to\) \empha{*almohada amarillo})
-    \end{itemize}
-  \item Aquesta aproximació s'usa més que no us penseu!
-  \end{itemize}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{ Com funciona la TA? /12}
-{
-  
-  { Per a programar un sistema de TA (basat en regles) cal \textbf{formular
-      tots els processos de traducció de forma} \empha{\textbf{explícita}} i
-    \empha{\textbf{mecanitzable}}} {(adéu ``intuïció
-    lingüística''!).}
-  
-  {A més, la mecanització ha de ser \empha{eficient} (programes
-    \textbf{ràpids} i \textbf{compactes}) i s'ha de
-    \textbf{dur a terme en un temps raonable}:}
-\begin{itemize}\setlength{\itemsep}{0pt}
-{\item Això exigeix una \textbf{reflexió lingüística}
-  (traductològica) sobre els processos de traducció per part dels
-  dissenyadors del sistema.}
-{\item A més, pot comportar més \textbf{aproximacions},
-  \textbf{simplificacions}, \textbf{compromisos} i
-  \textbf{sacrificis}.}
-\end{itemize}
-}
-\end{frame}
 
 %\section{Traducció automàtica estadística}
 \begin{frame}

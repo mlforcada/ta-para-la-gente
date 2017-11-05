@@ -103,10 +103,38 @@ Universitat d'Alacant,  03071 Alacant \\[0.2cm]
 }
 \end{frame}
 
+%%%%%%%%%%%%%%%%%
+\begin{frame}
+  
+\frametitle{¿Qué es la traducción automática (TA) /2?}
+
+¿Ordenadores?
+\begin{itemize}
+\item Bueno, también teléfonos móviles, tabletas, etc. (que en el fondo son también ordenadores). 
+\item Una buena parte del trabajo se hace en otros ordenadores: uno o
+  más servidores conectados al nuestro por Internet (``la nube'').
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  
+\frametitle{¿Qué es la traducción automática (TA) /3?}
+
+¿Programas?
+\begin{itemize}
+\item También las \emph{aplicaciones} o \emph{apps} o los navegadores
+  son programas.
+\item Normalmente una parte del trabajo lo hace un programa en nuestro
+  ordenador, móvil, tableta, y otra parte un programa en el servidor.
+\item Muchas veces ni siquiera lanzamos nosotros el sistema de traducción automática: se nos ofrece en navegadores y redes sociales.
+\end{itemize}
+\end{frame}
+
+
 %%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{¿Què es la traducción automática (TA)? /2}
+\frametitle{¿Què es la traducción automática (TA)? /4}
 
 Esquemáticamente:
 
@@ -117,11 +145,12 @@ Esquemáticamente:
 \end{tabular}
 \end{center}
 
+
 \end{frame}
 
 
 \begin{frame}
-\frametitle{¿Què es la traducción automática (TA)? /3}
+\frametitle{¿Què es la traducción automática (TA)? /5}
 
 La salida que producen los sistemas de traducción automática:
 \begin{itemize}
@@ -155,7 +184,10 @@ Dos grandes grupos:
   documentos en otra lengua que no conocemos. P.ej.,
   \empha{``navegación traduïda'' por Internet}, \textit{chat}
   multilingüe, etc.
-\item ¡Para \textbf{el resto de la gente}!
+  \begin{itemize}
+  \item ¡Para \textbf{el resto de la gente}!
+
+  \end{itemize}
 
 \end{itemize}
 
@@ -174,18 +206,19 @@ Dos grandes grupos:
   agus ba dhochreidte na radhairc a chonaic muid os ár gcomhair.}
 \begin{itemize}
 \item El sistema de escritura del irlandés usa el mismo alfabeto del
-  español (de hecho, sólo una parte), pero\ldots
+  español (de hecho, no todas las letras), pero\ldots
 \item ¿Alguien se anima a decir de qué va?
 
 \end{itemize}
   \end{frame}
 %%%%%%%%%%%%%%%%%%%
 \begin{frame}
-  \frametitle{Asimilación: traducción de Google Translate}
+  \frametitle{Asimilación: traducción de Google Translate (2-nov-2017)}
 
   \empha{Yo y mi esposo estábamos esperando Long Island cuando hicimos ese viaje. Nos dijeron que nos quedáramos por mar en el momento del engaño y aterrizamos en el avión para abordarnos. El viaje fue muy pequeño ya que el avión no tomó más de diez en ningún momento. No hay descripción de las escenas que vimos en el viaje al mayor. En una hora, habíamos llegado a nuestro propio pozo y las escenas que vimos fueron increíbles.}
 \begin{itemize}
 \item ¿Y ahora, alguien puede decir de qué va?
+\item ¿Hay algún lugar en el que nos hayamos atascado?
 \end{itemize}
 
 \end{frame}
@@ -267,7 +300,7 @@ Errores extraños:
 
 
   \begin{itemize}
-  \item El sistema se ha \emph{atragantado} con algunas palabras que ha marcado con ``@''.
+  \item El sistema \emph{se ha atragantado} con algunas palabras que ha marcado con ``@''.
   \end{itemize}
 \end{frame}
 
@@ -313,9 +346,13 @@ La \textbf{traducción automàtica basada en reglas (TABR)}
   \begin{itemize}
   \item aproximación dominante en productos comerciales hasta hace
     unos doce años
-  \item personas expertas compilan diccionarios, reglas de traducción
-    y escriben programas que los aplican
-  \item Ejemplos: \empha{Lucy}, \empha{Apertium}.
+  \item personas expertas
+    \begin{itemize}
+    \item compilan diccionarios electrónicos,
+    \item formulan reglas gramaticales y de traducción, y 
+    \item escriben programas que los aplican al texto.
+    \end{itemize}
+  \item Ejemplos en Internet: \empha{Lucy}, \empha{Apertium}.
   \end{itemize}
 \end{frame}
 
@@ -326,13 +363,117 @@ La \textbf{traducción automática basada en corpus (TABC)}:
   \begin{itemize}
   \item es actualmente la aproximación más pujante (el ''estado de la
     cuestión'')
-  \item los sistemas ``aprenden a traducir'' a partir de enormes
+  \item los sistemas \textbf{\emph{aprenden} a traducir} a partir de enormes
     corpus de texto bilingüe alineado oración a oración
   \item lo que aprenden són complejos modelos estadísticos o
     ``neuronales'' (enseguida lo vemos un poco)
   \end{itemize}
 \end{frame}
 
+
+\begin{frame}
+\frametitle{¿Cómo funciona la TA? /4}
+El sistema no conoce las lenguas, simplemente busca correspondencias:
+\begin{center}
+  \begin{tabular}{l|l}
+  \textbf{Lengua origen} & \textbf{Lengua meta} \\
+  \hline
+  an pifo & gur trafi \\
+  an pifo onapi & gur manga trafi \\
+  an saybe & gur suble \\
+  \end{tabular}
+\end{center}
+\begin{itemize}
+\item ¿Qué podríamos deducir de estas traducciones?
+\item ¿Cómo traduciríamos ``an saybe onapi''? ¿Por qué?
+\item Un ordenador puede aprender diccionarios y reglas.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{¿Cómo funciona la TA? /5}
+
+La \textbf{traducción automática estadística}:
+\begin{itemize}
+\item Aprende correspondencias entre fragmentos de oración y calcula probabilidades contando cuántas veces aparecen:
+\begin{center}
+  \begin{tabular}{l|l|r}
+  \textbf{Fragmento inglés} & \textbf{Fragmento español} & Probabilidad \\
+  \hline
+  the  & la  & 17\% \\
+  the  & el & 35\% \\
+  the  & las & 22\% \\
+  the  & los & 26\% \\
+  the car & el coche & 85\% \\
+  the house & la casa & 87\% \\
+  large car & coche grande & 95\% \\
+  a beautiful house & una casa preciosa & 78\% \\
+  \ldots & \ldots & \ldots \\
+  \end{tabular}
+\end{center}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{¿Cómo funciona la TA? /6}
+  Después:
+  \begin{itemize}
+  \item Trocea la oracion original de todas las maneras posibles
+  \item Busca las traducciones de los trozos
+  \item Ensambla los trozos de todas las maneras posibles
+    \begin{itemize}
+    \item Vale, no todas: usa aproximaciones para ahorrar tiempo.
+    \end{itemize}
+  \item Y usa 
+    \begin{itemize}
+    \item las probabilidades de traducción y
+    \item un modelo estadístico (¡otro!) de la lengua meta
+    \end{itemize}
+   para elegir el montaje más verosímil como traducción.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{¿Cómo funciona la TA? /7}
+La traducción automática \textbf{neuronal} aparece en 2013 (hubo precursores en 1997).
+
+Un traductor neuronal va montando la traducción
+\begin{itemize}
+\item escogiendo una a una la palabra más probable que sigue a las anteriores:
+  \begin{itemize}
+  \item Mi; Mi vuelo; Mi vuelo se; Mi vuelo se retrasó.
+  \end{itemize}
+\item teniendo en cuenta la oración original
+  \begin{itemize}
+  \item \emph{My flight was delayed.}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{¿Cómo funciona la TA? /8}
+La traducción automática \textbf{neuronal} 
+\begin{itemize}
+\item Ha aprendido a construir internamente \textbf{representaciones}
+  \begin{itemize}
+  \item de cada palabra de las lenguas origen y meta
+  \item de la oración original
+  \item de la traducción que va montando
+  \end{itemize}
+\item Cada representación es un \textbf{patrón} formado por los valores de
+  \emph{activación} de un grupo de \textbf{neuronas artificiales}
+  \begin{itemize}
+  \item más o menos como cada posible imagen en una resonancia del cerebro
+  \item unas neuronas \textbf{activan} o \textbf{inhiben} a otras y así van construyendo las
+    representaciones
+  \end{itemize}
+
+
+\end{itemize}
+
+
+\end{frame}
 
 \section{Retos}
 \begin{frame}
@@ -344,124 +485,93 @@ Pero ¡atención!  Les \textbf{oraciones} de un texto pueden ser
 \begin{itemize}
 \item porque sus palabras tengan más de una interpretación (ambigüedad
   \empha{léxica})
- 
+
 
 \item porque la oración tenga más de una posible estructura  (ambigüedad \empha{sintáctica})
 
 \item o por las dos cosas.
 \end{itemize}
 (enseguida vemos unos ejemplos)
+\end{frame}
+%\textbf{[posar exemples ací?]}
 
-Elegir la interpretación correcta no es trivial para un sistema
+\begin{frame}
+\frametitle{Retos /3}
+\begin{itemize}
+\item Elegir la interpretación correcta no es trivial para un sistema
 informático (que sólo tiene acceso al texto mismo).
+
+\item Las personas usamos nuestra experiencia, nuestras expectativas y nuestro conocimiento del mundo para elegir.
+
+\end{itemize}
+
 
 %\textbf{[posar exemples ací?]}
 
 \end{frame} 
 
+\begin{frame}
+  \frametitle{Retos /3}
+  Ambigüedades léxicas:
+  \begin{itemize}
+  \item \emph{--- Le vendo un coche. ---Y yo ¿para qué quiero un coche vendado?}
+    \begin{itemize}
+    \item \emph{vendo}: ¿\emph{vender} o \emph{vendar}?
+    \end{itemize}
+  \item \emph{Trabaja en el estudio que le encargaron.}
+    \begin{itemize}
+    \item \emph{estudio}: ¿\emph{informe}, \emph{taller}, \emph{pequeño apartamento}\ldots?
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Retos /4}
+  Ambigüedades estructurales:
+  \begin{itemize}
+  \item \emph{Aprendió a afeitarse en treinta segundos.}
+    \begin{itemize}
+    \item ¿Tiempo de afeitado o tiempo de aprendizaje?
+    \item \emph{\framebox{aprendió a} \framebox{afeitarse \framebox{en treinta segundos}}} 
+    \item \emph{\framebox{\framebox{aprendió a} \framebox{afeitarse}} \framebox{en treinta segundos}} 
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Retos /4}
+  Ambigüedades estructurales:
+  \begin{itemize}
+  \item \emph{Trajo noticias de Grecia}
+    \begin{itemize}
+    \item ¿Procedentes de Grecia o sobre Grecia?
+    \item \emph{\framebox{Trajo}\framebox{noticias \framebox{de Grecia}}}
+    \item \emph{\framebox{Trajo \framebox{noticias}} \framebox{de Grecia}}
+    \end{itemize}
+  \item \emph{Se vende piso con ascensor de 90 m$^2$}
+    \begin{itemize}
+    \item ¡Vaya pedazo de ascensor!
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Retos /4}
+Los sistemas de traducción automática a veces tienen que reordenar completamente la frase:
+\begin{center}
+  \emph{Donostiako$^1$ gizon$^2$ haundi $^3$ harek$^4$ zekarren$^5$ automobila$^6$} \\ 
+  $\downarrow$
+  \\
+  \emph{[El coche]\ $^6$ [que traía]\ $^5$ aquel$^4$ hombre$^2$ grande$^3$ [de San Sebastián]\ $^1$}  
+\end{center}
+\end{frame}
+
+
+\end{document}
 
 
 %%%%%%%%%%%%%%%%%%%
-
-
-%\section{Traducció automàtica estadística}
-\begin{frame}
- \frametitle{Com funciona la TA/13}
-
-\textbf{Traducció automàtica basada en corpus}
- \begin{itemize}
- \item Fins ara hem parlat de \empha{traducció automàtica basada en regles} i diccionaries escrits per experts.
-\item Contràriament, la \textbf{traducció automàtica basada en corpus} es basa en la idea que ``les traduccions existents contenen més solucions a més problemes de traducció que qualsevol altre recurs disponible'' (Pierre Isabelle)
-\item Entre la traducció automàtica basada en corpus, destaca la
-\textbf{traducció automàtica estadística} per la seua hegemonia actual.
- \end{itemize}
-
-
-\end{frame}
-
-
-\begin{frame}
- \frametitle{Com funciona la TA? /14}
-
-\textbf{Entrenament d'un sistema estadístic:}
-
-En \empha{traducció automàtica estadística}, s'\empha{entrena} el
-sistema a partir de
-\begin{itemize}
-\item un \empha{gran corpus de text bilingüe alineat oració a
-  oració}  (o siga, un corpus bilingüe d'oracions)
-\item  i d'un \empha{corpus de text monolingüe en la llengua meta encara més gran}. 
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}
- \frametitle{Com funciona la TA? /15}
-
-El resultat de l'\empha{entrenament}:
-\begin{itemize}
-\item Diccionaris \emph{probabilístics} de mots i segments de més d'un mot (on s'associen probabilitats a unitats de traducció com ara \tu{con cargo a}{a càrrec de} (probable) o \tu{con cargo a}{de bestreta} (improbable).
-\item Models que assignen probabilitats a seqüències de paraules en la llengua meta (de manera que \texttt{``dues de les tres són''} siga més probable que \texttt{``de són tres dues les''}.
-\item Models probabilístics de reordenament (p.ex., per a obtenir ``\texttt{el cotxe\(^2\) del qual\(^1\)}'' a partir de ``\texttt{cuyo\(^1\) coche\(^2\)}'')
-\end{itemize}
-
-\end{frame}
-\begin{frame}
- \frametitle{Com funciona la TA? /16}
-
-\textbf{El procés de traducció estadística:}
-
-\begin{itemize}
-\item Aquestes probabilitats es poden veure com \empha{puntuacions
-    parcials} que es combinen per a cada oració i es ponderen amb
-  \empha{pesos} usant un \empha{barem} per a donar una
-  \empha{puntuació global} a totes les traduccions possibles d'una
-  oració donada.
-\item La traducció serà la que millor \empha{puntuació global} obtinga.
-\item Evidentment, no es baremen \empha{totes} les traduccions possibles (moltíssimes!): s'usen \emph{aproximacions} per a buscar només entre les que \emph{a priori} són més
-probables.
-\item Es tracta d'un procés computacionalment molt intensiu: per això només tenim traducció estadística aplicable des de fa poc més d'un decenni.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Com funciona la TA? /17}
-
-
-\textbf{Ajust} (o \empha{tuning}) del sistema estadístic: 
-
-D'acord, però, quin és el \empha{pes} que cal donar en el \emph{barem} a cada
-\empha{puntuació parcial}?
-
-Ens reservem una part del \empha{corpus bilingüe} per a l'ajust:
-\begin{itemize}
-\item Traduïm cada oració a l'altra llengua usant diferents valors dels \empha{pesos}
-\item Comparem quantitativament la \empha{semblança} entre la traducció
-  automàtica i la que hi ha al corpus.
-  \begin{itemize}
-  \item Normalment bastant burda: es puntuen les coincidències de grups d'un mot, de dos mots, de tres mots, etc (un altre barem!).
-  \end{itemize}
-\item Ajustem els pesos perquè aquesta \empha{semblança} siga com més
-  estreta millor per a tot el corpus d'ajust.
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Com funciona la TA? /18}
-Com a conseqüència, en traducció automàtica estadística:
-\begin{itemize}
-\item No calen experts per a construir el sistema.
-\item És impossible puntuar totes les possibles traduccions d'una
-  oració donada (ens podem perdre la millor perquè la recerca és aproximada).
-\item Un sistema de traducció automàtica estadística entrenat sobre un determinat corpus produeix traduccions \empha{similars} a les del corpus.
-\item La \empha{semblança} vindrà determinada per la funció de \empha{semblança} usada per a l'ajust.
-\item Traduccions molt \empha{naturals} (gràcies al model
-  probabilístic de la llengua meta) poden ser \empha{infidels}.
-\item Canviar un mot origen pot donar lloc a una oració meta completament diferent.
-\end{itemize}
-\end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

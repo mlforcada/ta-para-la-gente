@@ -140,8 +140,8 @@ Esquemáticamente:
 
 \begin{center}
 \begin{tabular}{ccccc}
-\textbf{Texto LO} & $\to$ & \framebox{\parbox{3.5cm}{Sistema de traducción
-    automática}} & $\to$ & \parbox{2.0cm}{\textbf{Texto LM} (en bruto)} \\ 
+\textbf{Texto LO} & $\to$ & \framebox{\parbox{2.2cm}{Sistema de \\ traducción
+    \\ automática}} & $\to$ & \parbox{2.0cm}{\textbf{Texto LM} (en bruto)} \\ 
 \end{tabular}
 \end{center}
 
@@ -155,7 +155,7 @@ Esquemáticamente:
 La salida que producen los sistemas de traducción automática:
 \begin{itemize}
 \item no és como un producto profesional de traducción;
-\item normalmente no se puede publicar como está (pero\ldots)
+\item normalmente no se puede publicar como está (pero a veces se hace)
 \end{itemize}
 ¿Y cómo se usa?
 
@@ -192,6 +192,57 @@ Dos grandes grupos:
 \end{itemize}
 
 \end{frame}
+
+\begin{frame}
+\frametitle{Aplicaciones de la TA /2}
+
+La \textbf{asimilación} es el uso más frecuente de la traducción automática.
+
+Ya en 2012, Franz-Josef Och, \emph{científico distinguido} en el departamento de traducción automática de Google, decía:
+\begin{quote}
+En un dia cualquiera, traducimos aproximadamente tanto texto como el que contendrían un millón de libros. O, lo que es lo mismo, lo que todos los traductores profesionales traducen en un año, lo traduce nuestro sistema en aproximadamente un día.  \footnote{\url{https://googleblog.blogspot.co.uk/2012/04/breaking-down-language-barriersix-years.html}}
+\end{quote} 
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Aplicaciones de la TA /3}
+Ejemplos de posibles aplicaciones:
+\begin{itemize}
+\item Leer prensa en idiomas extranjeros.
+\begin{itemize}
+\item De hecho, la BBC usa la TA para seguir qué dicen otros medios sobre los temas que forman parte de sus noticias.
+\item Ver que dicen en otro país cuando nuestro equipo juega allí.
+\end{itemize}
+\item Aprender
+\begin{itemize}
+\item Por ejemplo, leer la Wikipedia en otras lenguas
+\end{itemize}
+\item Leer páginas escritas en otras lenguas oficiales de España
+\begin{itemize}
+\item ¡Funciona mejor con el valenciano/catalán y el gallego que con el vasco!
+\end{itemize}
+\item Aprender idiomas (por ejemplo, estudiando textos extranjeros).
+\item Tener amistades que hablan otros idiomas (usando la TA para comunicarnos).
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Aplicaciones de la TA/4}
+¿Dónde encontramos traducción automática?
+\begin{itemize}
+\item Aplicaciones para nuestro móvil: Google Translate, Apertium.
+\item Navegadores habilitados (como Chrome o Chromium) que incluyen traducción automática.
+\item Redes sociales (por ejemplo, Twitter ofrece traducciones automáticas de los tuits).
+\item Páginas web:
+\begin{itemize}
+\item \url{Google Translate}, \url{Bing Translator}, \url{DeepL}, \url{Lucy Software}, etc.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Asimilación: un texto en irlandés/1}
@@ -436,7 +487,7 @@ La \textbf{traducción automática estadística}:
 
 \begin{frame}
 \frametitle{¿Cómo funciona la TA? /7}
-La traducción automática \textbf{neuronal} aparece en 2013 (hubo precursores en 1997).
+\textbf{La traducción automática neuronal} aparece en 2013 (hubo precursores en 1997).
 
 Un traductor neuronal va montando la traducción
 \begin{itemize}
@@ -455,7 +506,7 @@ Un traductor neuronal va montando la traducción
 \frametitle{¿Cómo funciona la TA? /8}
 La traducción automática \textbf{neuronal} 
 \begin{itemize}
-\item Ha aprendido a construir internamente \textbf{representaciones}
+\item Aprende a construir internamente \textbf{representaciones}
   \begin{itemize}
   \item de cada palabra de las lenguas origen y meta
   \item de la oración original
@@ -466,7 +517,7 @@ La traducción automática \textbf{neuronal}
   \begin{itemize}
   \item más o menos como cada posible imagen en una resonancia del cerebro
   \item unas neuronas \textbf{activan} o \textbf{inhiben} a otras y así van construyendo las
-    representaciones
+    representaciones.
   \end{itemize}
 
 
@@ -479,7 +530,10 @@ La traducción automática \textbf{neuronal}
 \begin{frame}
 \frametitle{Retos /1}
 
-Pero ¡atención!  Les \textbf{oraciones} de un texto pueden ser
+La traducción automática se enfrenta con numerosos retos.
+
+
+Por ejemplo, las \textbf{oraciones} de un texto pueden ser
 \textbf{ambiguas} (es decir, tener más de una interpretación):
 
 \begin{itemize}
@@ -558,14 +612,19 @@ informático (que sólo tiene acceso al texto mismo).
 
 \begin{frame}
 \frametitle{Retos /4}
-Los sistemas de traducción automática a veces tienen que reordenar completamente la frase:
+La ambigüedad no es el único reto.
+
+Los sistemas de traducción automática a veces tienen que reordenar completamente las frases:
 \begin{center}
   \emph{Donostiako$^1$ gizon$^2$ haundi $^3$ harek$^4$ zekarren$^5$ automobila$^6$} \\ 
   $\downarrow$
   \\
-  \emph{[El coche]\ $^6$ [que traía]\ $^5$ aquel$^4$ hombre$^2$ grande$^3$ [de San Sebastián]\ $^1$}  
+  \emph{[El coche]\ $^6$ [que traía]\ $^5$ aquel$^4$ hombre$^2$ grande$^3$ [de San Sebastián]\ $^1$} \\[1cm]
+ 1--2--3--4--5--6 $\to$ 6--5--4--2--3--1 ! 
 \end{center}
 \end{frame}
+
+
 
 
 \end{document}

@@ -2,7 +2,7 @@
 %\documentclass[handout]{beamer}
  \mode<presentation>{ 
  \usetheme{Antibes}%\usetheme{Warsaw}  
-\setbeamercovered{transparent}
+\setbeamercovered{invisible}
    %\usecolortheme{albatross} % for inverted color
 % \usecolortheme{wolverine} % way too flashy!
     %\usefonttheme{structurebold}
@@ -23,10 +23,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{alltt}
 \usepackage[normalem]{ulem}
-
-\newcommand{\Pair}[2]{\texttt{#1}\(\leftrightarrow\)\texttt{#2}}
-\newcommand{\pair}[2]{\texttt{#1}\(\to\)\texttt{#2}}
-
+\newcommand{\empha}[1]{\emph{#1}}
 \title[Traducción automática para la gente]{Traducción automática para la gente: no sólo para profesionales de la traducción}
 
 \author[M.L.\ Forcada]{Mikel L.\ Forcada\inst{1,2}}
@@ -37,20 +34,11 @@ Universitat d'Alacant,  03071 Alacant \\[0.2cm]
 \inst{2}Prompsit Language Engineering, S.L., \\ Edifici Quorum III, Av. Universitat s/n, 03202 Elx}
 
 
-\date[15/11/2017]{Torrevieja, 15 de noviembre de 2015}
+\date[Torrevieja 15/11/2017]{Torrevieja Científica: Jornadas de Tecnología Informática \\
+Centro Cultural Virgen del Carmen, 
+Torrevieja \\ 15 de noviembre de 2017}
 
 
-\newcommand{\tu}[2]{(\texttt{``#1''},\texttt{``#2''})}
-
-\newcommand{\catala}{català}
-\newcommand{\catalana}{catalana}
-\newcommand{\espanyol}{espanyol}
-\newcommand{\delespanyol}{de l'espanyol}
-\newcommand{\lespanyola}{l'espanyola}
-\newcommand{\menjo}{menjo}
-\newcommand{\uneixi}{uneixi}
-\newcommand{\atura}{atura}
-\newcommand{\empha}[1]{\emph{#1}\/}
 
 %\newcommand{\curs}{Traducció Automàtica: Fonaments i Aplicacions}
 %\newcommand{\llocidata}{Universitat d'Alacant, 2004}
@@ -70,6 +58,12 @@ Universitat d'Alacant,  03071 Alacant \\[0.2cm]
 % \maketitle
 % \titlepage
 % \end{frame}
+
+
+\begin{frame}<beamer>
+\frametitle{Contents}
+\tableofcontents
+\end{frame}
 
 
 
@@ -131,11 +125,6 @@ con varios niveles de protección legal.
 
 
 
-\begin{frame}<beamer>
-\frametitle{Contents}
-\tableofcontents
-\end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%
 \section{¿Qué es la traducción automàtica (TA)?}
@@ -146,7 +135,7 @@ con varios niveles de protección legal.
 {La \empha{traducción}, \ldots }
 \pause
 
-{\ldots mediante un \empha{sistema informático} \ldots}
+{\ldots mediante un sistema informático \ldots}
 \pause
 
 {\ldots (ordenador(es) +
@@ -168,25 +157,34 @@ con varios niveles de protección legal.
   
 \frametitle{¿Qué es la traducción automática (TA) /2?}
 
-¿Ordenadores?
+¿Ordenadores? \includegraphics[scale=0.02]{computer.png}
+\includegraphics[scale=0.16]{laptop.png}\pause
 \begin{itemize}
-\item Bueno, también teléfonos móviles, tabletas, etc. (que en el fondo son también ordenadores). 
+\item Bueno, también teléfonos móviles, tabletas, etc. 
+\includegraphics[scale=0.02]{smartphone.png}\includegraphics[scale=0.05]{tablet.png}
+(que en el fondo son también ordenadores).\pause
 \item Una buena parte del trabajo se hace en otros ordenadores: uno o
-  más servidores conectados al nuestro por Internet (``la nube'').
+  más servidores conectados al nuestro por Internet (``la nube'').\\
+\includegraphics[scale=0.15]{cloud.png}
 \end{itemize}
 \end{frame}
+
+
 
 \begin{frame}
   
 \frametitle{¿Qué es la traducción automática (TA) /3?}
 
-¿Programas?
+¿Programas?\pause
 \begin{itemize}
-\item También las \emph{aplicaciones} o \emph{apps} o los navegadores
-  son programas.
+\item También las \emph{aplicaciones} o \emph{apps} o los navegadores de Internet 
+  como \emph{Chrome} o \emph{Firefox} son programas.\pause
 \item Normalmente una parte del trabajo lo hace un programa en nuestro
-  ordenador, móvil, tableta, y otra parte un programa en el servidor.
-\item Muchas veces ni siquiera lanzamos nosotros el sistema de traducción automática: se nos ofrece en navegadores y redes sociales.
+  ordenador, móvil, tableta, y otra parte un programa en el servidor.\pause
+\item Muchas veces ni siquiera lanzamos nosotros el sistema de traducción automática: se nos ofrece en navegadores y redes sociales.\pause
+  \begin{itemize}
+  \item De hecho, además de \emph{Google}, \emph{Facebook} desarrolla sus propios sistemas de TA.
+  \end{itemize}\pause
 \end{itemize}
 \end{frame}
 
@@ -200,8 +198,9 @@ Esquemáticamente:
 
 \begin{center}
 \begin{tabular}{ccccc}
-\textbf{Texto LO} & $\to$ & \framebox{\parbox{2.2cm}{Sistema de \\ traducción
-    \\ automática}} & $\to$ & \parbox{2.0cm}{\textbf{Texto LM} (en bruto)} \\ 
+\framebox{\parbox{2.2cm}{\raggedright\includegraphics[scale=0.07]{text.png}\\\textbf{Texto en lengua origen}}} & $\to$ & \framebox{\parbox{2.2cm}{\includegraphics[scale=0.15]{computer-gearbox.jpg}\\Sistema de \\ traducción
+    \\ automática}} & $\to$ & 
+\framebox{\parbox{2.2cm}{\raggedright\includegraphics[scale=0.07]{text.png}\\\textbf{Texto en lengua meta} (en bruto)}} \\ 
 \end{tabular}
 \end{center}
 
@@ -212,11 +211,11 @@ Esquemáticamente:
 \begin{frame}
 \frametitle{¿Què es la traducción automática (TA)? /5}
 
-La salida que producen los sistemas de traducción automática\ldots
+La salida que producen los sistemas de traducción automática\ldots\pause
 \begin{itemize}
-\item \ldots no es como un producto profesional de traducción,
-\item \ldots normalmente no se puede publicar como está (pero a veces se hace), y
-\item \ldots muchas veces es la única traducción a la que se tiene acceso.
+\item \ldots no es como un producto profesional de traducción,\pause
+\item \ldots normalmente no se puede publicar como está (pero a veces se hace), y\pause
+\item \ldots muchas veces es la única traducción a la que se tiene acceso.\pause
 \end{itemize}
 ¿Y cómo se usa?
 
@@ -231,22 +230,22 @@ La salida que producen los sistemas de traducción automática\ldots
 
 \begin{frame}
 \frametitle{Aplicaciones de la TA /1}
-Dos grandes grupos:
+Dos grandes grupos:\pause
 \begin{itemize} 
 
 \item\empha{\textbf{Diseminación:}} traducción \textbf{permanente}, idealmente
   \textbf{con pocos errores}, para su  \textbf{publicación}. P.ej.,
   producción de \textbf{borradores} para corregir
-  (\textit{posteditar}).
+  (\textit{posteditar}).\pause
 \begin{itemize}
-\item Para \textbf{profesionales de la traducción}.
+\item Para \textbf{profesionales de la traducción}.\pause
 \end{itemize}
 
 \item\empha{\textbf{Asimilación:}} traducción \textbf{efímera}, idealmente
   \textbf{instantánea}, para la revisión o la \textbf{comprensión} de
   documentos en otra lengua que no conocemos. P.ej.,
   \empha{``navegación traduïda'' por Internet}, \textit{chat}
-  multilingüe, etc.
+  multilingüe, etc.\pause
   \begin{itemize}
   \item ¡Para \textbf{el resto de la gente}!
 
@@ -263,7 +262,7 @@ La \textbf{asimilación} es el uso más frecuente de la traducción automática.
 
 Ya en 2012, Franz-Josef Och, \emph{científico distinguido} en el departamento de traducción automática de Google, decía:
 \begin{quote}
-En un dia cualquiera, traducimos aproximadamente tanto texto como el que contendrían un millón de libros. O, lo que es lo mismo, lo que todos los traductores profesionales traducen en un año, lo traduce nuestro sistema en aproximadamente un día.  \footnote{\url{https://googleblog.blogspot.co.uk/2012/04/breaking-down-language-barriersix-years.html}}
+En un dia cualquiera, traducimos aproximadamente tanto texto como el que contendrían un millón de libros. O, lo que es lo mismo, lo que todos los traductores profesionales traducen en un año, lo traduce nuestro sistema en aproximadamente un día.\footnote{\url{https://googleblog.blogspot.co.uk/2012/04/breaking-down-language-barriersix-years.html}}
 \end{quote} 
 
 
@@ -271,22 +270,22 @@ En un dia cualquiera, traducimos aproximadamente tanto texto como el que contend
 
 \begin{frame}
 \frametitle{Aplicaciones de la TA /3}
-Ejemplos de posibles aplicaciones:
+Ejemplos de aplicaciones:\pause
 \begin{itemize}
-\item Leer prensa en idiomas extranjeros.
+\item Leer en español la prensa extranjera.\pause
 \begin{itemize}
-\item De hecho, la BBC usa la TA para seguir qué dicen otros medios sobre los temas que forman parte de sus noticias.
-\item Ver que dicen en otro país cuando nuestro equipo juega allí.
+\item De hecho, la BBC usa la TA para seguir qué dicen otros medios sobre los temas que forman parte de sus noticias.\pause
+\item Ver que dicen en otro país cuando nuestro equipo juega allí.\pause
 \end{itemize}
 \item Aprender
 \begin{itemize}
-\item Por ejemplo, leer artículos de Wikipedia en otras lenguas
+\item Por ejemplo, leer artículos de Wikipedia en otras lenguas\pause
 \end{itemize}
-\item Leer páginas escritas en otras lenguas oficiales de España
+\item Leer en español páginas escritas en otras lenguas oficiales de España\pause
 \begin{itemize}
-\item ¡Funciona mejor con el valenciano/catalán y el gallego que con el vasco!
+\item ¡Funciona mejor con el valenciano/catalán y el gallego que con el vasco!\pause
 \end{itemize}
-\item Aprender idiomas (por ejemplo, estudiando textos extranjeros).
+\item Aprender idiomas (por ejemplo, estudiando textos extranjeros).\pause
 \item Tener amistades que hablan otros idiomas (usando la TA para comunicarnos).
 \end{itemize}
 
@@ -294,15 +293,20 @@ Ejemplos de posibles aplicaciones:
 
 \begin{frame}
 \frametitle{Aplicaciones de la TA/4}
-¿Dónde encontramos traducción automática?
+¿Dónde encontramos traducción automática?\pause
 \begin{itemize}
-\item Aplicaciones para nuestro móvil: Google Translate, Apertium.
-\item Navegadores habilitados (como Chrome o Chromium) que incluyen traducción automática.
-\item Redes sociales (por ejemplo, Twitter ofrece traducciones automáticas de los tuits).
-\item Páginas web:
-\begin{itemize}
-\item \url{Google Translate}, \url{Bing Translator}, \url{DeepL}, \url{Lucy Software}, etc.
-\end{itemize}
+\item Aplicaciones para nuestro móvil: Google Translate, Apertium\ldots
+\includegraphics[scale=0.09]{googletranslate.png}
+\includegraphics[scale=0.11]{apertium.png}\pause
+\item Navegadores habilitados (como Chrome o Chromium) que incluyen traducción automática.\pause
+\item Redes sociales (por ejemplo, Twitter ofrece traducciones automáticas de los tuits).\pause
+\item Páginas web: \emph{Google Translate}, \emph{Bing Translator}, \emph{DeepL}, \emph{Lucy Software}, \emph{Apertium} etc.
+\includegraphics[scale=0.09]{googletranslate.png}
+\includegraphics[scale=0.1]{bing.png}
+\includegraphics[scale=0.25]{deepl.png}
+\includegraphics[scale=0.2]{lucy.png}
+\includegraphics[scale=0.11]{apertium.png}
+\pause
 \end{itemize}
 \end{frame}
 
@@ -310,6 +314,7 @@ Ejemplos de posibles aplicaciones:
 \begin{frame}
   \frametitle{Asimilación: un texto en irlandés/1}
 
+  \framebox{\parbox{\textwidth}{
   \empha{Is ar an Oileán Fada a bhí mé féin agus m’fhear céile ag fanacht
   nuair a rinne muid an turas sin. Dúradh linn fanacht cois farraige
   ag am díthrá agus thuirling an muireitleán anuas chun sinn a
@@ -317,7 +322,7 @@ Ejemplos de posibles aplicaciones:
   t-eitleán sin thar deichniúr in am ar bith. Níl cur síos ar na
   radhairc a chonaic muid ar an aistear go dtí an mhórsceir.  Taobh
   istigh d’uair an chloig, bhí an mhórsceir féin bainte amach againn
-  agus ba dhochreidte na radhairc a chonaic muid os ár gcomhair.}
+  agus ba dhochreidte na radhairc a chonaic muid os ár gcomhair.}}}\pause
 \begin{itemize}
 \item El sistema de escritura del irlandés usa el mismo alfabeto del
   español (de hecho, no todas las letras), pero\ldots
@@ -329,7 +334,9 @@ Ejemplos de posibles aplicaciones:
 \begin{frame}
   \frametitle{Asimilación: traducción de Google Translate (2-nov-2017)}
 
-  \empha{Yo y mi esposo estábamos esperando Long Island cuando hicimos ese viaje. Nos dijeron que nos quedáramos por mar en el momento del engaño y aterrizamos en el avión para abordarnos. El viaje fue muy pequeño ya que el avión no tomó más de diez en ningún momento. No hay descripción de las escenas que vimos en el viaje al mayor. En una hora, habíamos llegado a nuestro propio pozo y las escenas que vimos fueron increíbles.}
+  \framebox{\parbox{\textwidth}{
+
+  \empha{Yo y mi esposo estábamos esperando Long Island cuando hicimos ese viaje. Nos dijeron que nos quedáramos por mar en el momento del engaño y aterrizamos en el avión para abordarnos. El viaje fue muy pequeño ya que el avión no tomó más de diez en ningún momento. No hay descripción de las escenas que vimos en el viaje al mayor. En una hora, habíamos llegado a nuestro propio pozo y las escenas que vimos fueron increíbles.}}}\pause
 \begin{itemize}
 \item ¿Y ahora, alguien puede decir de qué va?
 \item ¿Hay algún lugar en el que nos hayamos atascado?
@@ -339,9 +346,10 @@ Ejemplos de posibles aplicaciones:
 %%%%%%%%%%%%%%%%%%%
 \begin{frame}
   \frametitle{Asimilación: lo que quería decir (poco más o menos)}
-
-\empha{\textbf{Fue en Long Island que mi esposo y yo} estábamos \textbf{hospedados} cuando hicimos ese viaje. Nos dijeron \textbf{que quedáramos a la orilla del} mar en el momento de \textbf{la bajamar, donde aterrizaría}  el \textbf{hidroavión} para \textbf{que lo abordáramos}. El \textbf{grupo era} muy pequeño ya que el avión no \textbf{podía llevar a} más de \textbf{diez personas en} ningún momento. No \textbf{se pueden describir} las escenas que vimos en el viaje al \textbf{arrecife}. En una hora, habíamos llegado \textbf{al propio arrecife} y las escenas que vimos fueron increíbles.}
-
+  \framebox{\parbox{\textwidth}{
+\empha{\textbf{Fue en Long Island donde mi esposo y yo} estábamos \textbf{hospedados} cuando hicimos ese viaje. Nos dijeron \textbf{que quedáramos a la orilla del} mar en el momento de \textbf{la bajamar, donde aterrizaría}  el \textbf{hidroavión} para \textbf{que lo abordáramos}. El \textbf{grupo era} muy pequeño ya que el avión no \textbf{podía llevar a} más de \textbf{diez personas en} ningún momento. No \textbf{se pueden describir} las escenas que vimos en el viaje al \textbf{arrecife}. En una hora, habíamos llegado \textbf{al propio arrecife} y las escenas que vimos fueron increíbles.}
+}}
+\pause
 Errores extraños:
 \begin{itemize}
 \item ¿Por qué el \empha{hidroavión} se convierte en un \empha{avión} normal?
@@ -355,7 +363,7 @@ Errores extraños:
 %%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Aplicaciones de la TA /2}
+\frametitle{Aplicaciones de la TA /5}
 
 \empha{Postedición y preedición}: los professionales colaboran con el
   sistema de TA en aplicaciones de \textbf{diseminación}:
@@ -381,6 +389,7 @@ Errores extraños:
 \begin{frame}
   \frametitle{Ejemplo de postedición: texto original en portugués} 
 
+  \framebox{\parbox{\textwidth}{
   \empha{Nova Iorque teve ontem uma noite de festa, após a aprovação
     durante a tarde (madrugada em Lisboa) pelo Senado estadual da lei
     que reconhece o direito ao casamento homossexual, por 33 votos
@@ -389,7 +398,7 @@ Errores extraños:
     vezes pela Assembleia do Estado, mas tinha sido sempre
     \textbf{rejeitada} pelo Senado de Nova Iorque, que agora se torna
     no sexto \textbf{estados} dos EUA a permitir o casamento entre
-    pessoas do mesmo sexo.}
+    pessoas do mesmo sexo.}}}
 
   \begin{itemize}
   \item El texto original tiene dos errores (en negrita).
@@ -402,6 +411,7 @@ Errores extraños:
 \begin{frame}
   \frametitle{Traducción en bruto al español (apertium-pt-es)}
 
+  \framebox{\parbox{\textwidth}{
   \empha{Nueva York tuvo ayer una noche de fiesta, después de la
     aprobación durante la tarde (madrugada en Lisboa) por Senado
     estadual de la ley que reconoce el derecho a la boda homosexual,
@@ -410,7 +420,7 @@ Errores extraños:
     cuatro veces por la @Assembleia del Estado, pero había sido
     siempre rechazada por Senado de Nueva York, que ahora se hace en
     el sexto estados de los EUA a permitir la boda entre personas del
-    mismo sexo.}
+    mismo sexo.}}}
 
 
   \begin{itemize}
@@ -420,6 +430,8 @@ Errores extraños:
 
 \begin{frame}
   \frametitle{Texto posteditado (postedición rápida)}
+
+  \framebox{\parbox{\textwidth}{
 
   \empha{Nueva York tuvo ayer una noche de fiesta, después de la
     aprobación durante la tarde (madrugada en \textbf{Torrevieja}) por
@@ -431,7 +443,7 @@ Errores extraños:
     siempre \textbf{rechazado} por \textbf{el} Senado de Nueva York, que ahora
     se \textbf{convierte} en el sexto \textbf{estado} de los
     \textbf{EEUU en} permitir \textbf{bodas} entre personas del mismo
-    sexo.}
+    sexo.}}}
 
   \begin{itemize}
   \item Los cambios se indican en negritas.
@@ -444,12 +456,12 @@ Errores extraños:
 
 \begin{frame}
   \frametitle{¿Cómo funciona la TA? /1}
-Dos grandes tecnologías: 
+Dos grandes tecnologías: \pause
 \begin{itemize}
-\item la \textbf{traducción automática basada en reglas (TABR)} i
-\item la \textbf{traducción automática basada en corpus (TABC)} 
+\item la \textbf{traducción automática basada en reglas (TABR)} \pause y
+\item la \textbf{traducción automática basada en corpus (TABC)} \pause
 \end{itemize}
-Por supuesto hay híbridos.
+Por supuesto hay tecnologías híbridas.
 \end{frame}
 %%%%%%
 
@@ -458,14 +470,14 @@ Por supuesto hay híbridos.
 
 La \textbf{traducción automàtica basada en reglas (TABR)}
   \begin{itemize}
-  \item aproximación dominante en productos comerciales hasta hace
-    unos doce años
-  \item personas expertas
+  \item Era la aproximación dominante en productos comerciales hasta hace
+    unos doce años.\pause
+  \item Personas expertas
     \begin{itemize}
     \item compilan diccionarios electrónicos,
     \item formulan reglas gramaticales y de traducción, y 
     \item escriben programas que los aplican al texto.
-    \end{itemize}
+    \end{itemize}\pause
   \item Ejemplos en Internet: \empha{Lucy}, \empha{Apertium}.
   \end{itemize}
 \end{frame}
@@ -475,12 +487,12 @@ La \textbf{traducción automàtica basada en reglas (TABR)}
   \frametitle{¿Cómo funciona la TA? /3}
 La \textbf{traducción automática basada en corpus (TABC)}:
   \begin{itemize}
-  \item es actualmente la aproximación más pujante (el ''estado de la
-    cuestión'')
-  \item los sistemas \textbf{\emph{aprenden} a traducir} a partir de enormes
-    corpus de texto bilingüe alineado oración a oración
-  \item lo que aprenden són complejos modelos estadísticos o
-    ``neuronales'' (enseguida lo vemos un poco)
+  \item Es actualmente la aproximación más pujante (el ''estado de la
+    cuestión'').\pause
+  \item Los sistemas \textbf{\emph{aprenden} a traducir} a partir de enormes
+    corpus de texto bilingüe alineado oración a oración.\pause
+  \item Lo que aprenden són complejos modelos estadísticos o
+    ``neuronales''.
   \end{itemize}
 \end{frame}
 
@@ -496,10 +508,10 @@ El sistema no conoce las lenguas, simplemente busca correspondencias:
   an pifo onapi & gur manga trafi \\
   an saybe & gur suble \\
   \end{tabular}
-\end{center}
+\end{center}\pause
 \begin{itemize}
-\item ¿Qué podríamos deducir de estas traducciones?
-\item ¿Cómo traduciríamos ``an saybe onapi''? ¿Por qué?
+\item ¿Qué podríamos deducir de estas traducciones?\pause
+\item ¿Cómo traduciríamos ``an saybe onapi''? ¿Por qué?\pause
 \item Un ordenador puede aprender diccionarios y reglas.
 \end{itemize}
 \end{frame}
@@ -533,52 +545,59 @@ La \textbf{traducción automática estadística}:
   \frametitle{¿Cómo funciona la TA? /6}
   Después:
   \begin{itemize}
-  \item Trocea la oracion original de todas las maneras posibles
-  \item Busca las traducciones de los trozos
-  \item Ensambla los trozos de todas las maneras posibles
+  \item Trocea la oracion original de todas las maneras posibles.\pause
+  \item Busca las traducciones de los trozos.\pause
+  \item Ensambla los trozos de todas las maneras posibles.\pause
     \begin{itemize}
-    \item Vale, no todas: usa aproximaciones para ahorrar tiempo.
+    \item Vale, no todas: descarta muchas para ahorrar tiempo.\pause
     \end{itemize}
   \item Y usa 
     \begin{itemize}
-    \item las probabilidades de traducción y
-    \item un modelo estadístico (¡otro!) de la lengua meta
+    \item las probabilidades de traducción y\pause
+    \item un modelo estadístico (¡otro!) de la lengua meta\pause
     \end{itemize}
-   para elegir el montaje más verosímil como traducción.
+   para elegir el montaje más verosímil como traducción.\footnote{Imagen tomada de Phillip Koehn (2010) \emph{Statistical Machine Translation}. Cambridge University Press}
   \end{itemize}
+\begin{center}
+\includegraphics[scale=0.21]{phrasebasedexample.jpg}
+\end{center}
 \end{frame}
 
 \begin{frame}
 \frametitle{¿Cómo funciona la TA? /7}
-\textbf{La traducción automática neuronal} aparece en 2013 (hubo precursores en 1997).
-
-Un traductor neuronal va montando la traducción
-\begin{itemize}
-\item escogiendo una a una la palabra más probable que sigue a las anteriores:
+\textbf{La traducción automática neuronal} (2013) (con precursores en 1997)\pause{}
+ va montando la traducción
+\begin{itemize}\pause
+\item escogiendo una a una la palabra más probable que sigue a las anteriores: \footnote{Figura de \url{https://github.com/OpenNMT/}}\pause
   \begin{itemize}
-  \item Mi; Mi vuelo; Mi vuelo se; Mi vuelo se retrasó.
+  \item ``Mi \pause vuelo \pause se \pause retrasó\pause.''
   \end{itemize}
-\item teniendo en cuenta la oración original
+\item teniendo en cuenta la representación construida para la oración original
   \begin{itemize}
-  \item \emph{My flight was delayed.}
+  \item \emph{My flight was delayed.}\pause
   \end{itemize}
 \end{itemize}
+\begin{center}
+\includegraphics[scale=0.3]{nmt.png}
+\end{center}
+
 \end{frame}
 
 \begin{frame}
 \frametitle{¿Cómo funciona la TA? /8}
-La traducción automática \textbf{neuronal} 
+La traducción automática \textbf{neuronal}\pause
 \begin{itemize}
-\item Aprende a construir internamente \textbf{representaciones}
+\item Aprende a construir \textbf{representaciones internas}\pause
   \begin{itemize}
-  \item de cada palabra de las lenguas origen y meta
-  \item de la oración original
-  \item de la traducción que va montando
+  \item de cada palabra de las lenguas origen y meta\pause
+  \item de la oración original\pause
+  \item de la traducción que va montando\pause
   \end{itemize}
 \item Cada representación es un \textbf{patrón} formado por los valores de
-  \emph{activación} de un grupo de \textbf{neuronas artificiales}
+  \emph{activación} de un grupo de \textbf{neuronas artificiales}\pause
   \begin{itemize}
-  \item más o menos como cada posible imagen en una resonancia del cerebro
+  \item más o menos como cada posible imagen en una
+    resonancia del cerebro\pause
   \item unas neuronas \textbf{activan} o \textbf{inhiben} a otras y así van construyendo las
     representaciones.
   \end{itemize}
@@ -593,22 +612,22 @@ La traducción automática \textbf{neuronal}
 \begin{frame}
 \frametitle{Retos /1}
 
-La traducción automática se enfrenta con numerosos retos.
+La traducción automática se enfrenta con numerosos retos.\pause
 
 
 Por ejemplo, las \textbf{oraciones} de un texto pueden ser
-\textbf{ambiguas} (es decir, tener más de una interpretación):
+\textbf{ambiguas} (es decir, tener más de una interpretación):\pause
 
 \begin{itemize}
 \item porque sus palabras tengan más de una interpretación (ambigüedad
-  \empha{léxica})
+  \empha{léxica})\pause
 
 
-\item porque la oración tenga más de una posible estructura  (ambigüedad \empha{estructural} o \empha{sintáctica})
+\item porque la oración tenga más de una posible estructura  (ambigüedad \empha{estructural} o \empha{sintáctica})\pause
 
-\item o por las dos cosas.
+\item o incluso por las dos cosas a la vez.\pause
 \end{itemize}
-(enseguida vemos unos ejemplos)
+(Enseguida vemos unos ejemplos)
 \end{frame}
 %\textbf{[posar exemples ací?]}
 
@@ -616,9 +635,9 @@ Por ejemplo, las \textbf{oraciones} de un texto pueden ser
 \frametitle{Retos /2}
 \begin{itemize}
 \item Elegir la interpretación correcta no es trivial para un sistema
-informático (que sólo tiene acceso al texto mismo).
+informático (que sólo tiene acceso al texto mismo).\pause
 \begin{itemize}
-\item Aunque recientemente se investiga en como usar  contexto: imágenes, perfiles personales, etc. (traducción automática multimodal).
+\item Aunque recientemente se investiga en cómo usar  contexto: imágenes, perfiles personales, etc. (traducción automática multimodal).\pause
 \end{itemize}
 
 \item Las personas usamos nuestra experiencia, nuestras expectativas y nuestro conocimiento del mundo para elegir.
@@ -634,14 +653,14 @@ informático (que sólo tiene acceso al texto mismo).
   \frametitle{Retos /3}
   Ambigüedades léxicas:
   \begin{itemize}
-  \item \emph{--- Le vendo un coche. ---Y yo ¿para qué quiero un coche vendado?}
+  \item \emph{--- Le vendo un coche. ---Y yo ¿para qué quiero un coche vendado?}\pause
     \begin{itemize}
     \item \emph{vendo}: ¿\emph{vender} o \emph{vendar}?
-    \end{itemize}
-  \item \emph{Trabaja en el estudio que le encargaron.}
+    \end{itemize}\pause
+  \item \emph{Trabaja en el estudio que le encargaron.}\pause
     \begin{itemize}
     \item \emph{estudio}: ¿\emph{informe}, \emph{taller}, \emph{pequeño apartamento}\ldots?
-    \end{itemize}
+    \end{itemize}\pause
   \end{itemize}
 \end{frame}
 
@@ -650,26 +669,26 @@ informático (que sólo tiene acceso al texto mismo).
   \frametitle{Retos /4}
   Ambigüedades estructurales:
   \begin{itemize}
-  \item \emph{Aprendió a afeitarse en treinta segundos.}
+  \item \emph{Aprendió a afeitarse en treinta segundos.}\pause
     \begin{itemize}
-    \item ¿Tiempo de afeitado o tiempo de aprendizaje?
-    \item \emph{\framebox{aprendió a} \framebox{afeitarse \framebox{en treinta segundos}}} 
+    \item ¿Tiempo de afeitado o tiempo de aprendizaje?\pause
+    \item \emph{\framebox{aprendió a} \framebox{afeitarse \framebox{en treinta segundos}}} \pause
     \item \emph{\framebox{\framebox{aprendió a} \framebox{afeitarse}} \framebox{en treinta segundos}} 
     \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Retos /4}
+  \frametitle{Retos /5}
   Ambigüedades estructurales:
   \begin{itemize}
-  \item \emph{Trajo noticias de Grecia}
+  \item \emph{Trajo noticias de Grecia}\pause
     \begin{itemize}
-    \item ¿Procedentes de Grecia o sobre Grecia?
-    \item \emph{\framebox{Trajo}\framebox{noticias \framebox{de Grecia}}}
-    \item \emph{\framebox{Trajo \framebox{noticias}} \framebox{de Grecia}}
+    \item ¿Procedentes de Grecia o sobre Grecia?\pause
+    \item \emph{\framebox{Trajo}\framebox{noticias \framebox{de Grecia}}}\pause
+    \item \emph{\framebox{Trajo \framebox{noticias}} \framebox{de Grecia}}\pause
     \end{itemize}
-  \item \emph{Se vende piso con ascensor de 90 m$^2$}
+  \item \emph{Se vende piso con ascensor de 90 m$^2$}\pause
     \begin{itemize}
     \item ¡Vaya pedazo de ascensor!
     \end{itemize}
@@ -677,30 +696,31 @@ informático (que sólo tiene acceso al texto mismo).
 \end{frame}
 
 \begin{frame}
-\frametitle{Retos /4}
-La ambigüedad no es el único reto.
+\frametitle{Retos /6}
+La ambigüedad no es el único reto. La tarea no es fácil.\pause
 
-Los sistemas de traducción automática a veces tienen que reordenar completamente las palabras de la oración (cuando las lenguas tienen estructuras muy diferentes):
+Los sistemas de traducción automática a veces tienen que \textbf{reordenar} completamente las palabras de la oración (cuando las lenguas tienen estructuras muy diferentes):\pause
 \begin{center}
-  \emph{Donostiako$^1$ gizon$^2$ haundi $^3$ harek$^4$ zekarren$^5$ automobila$^6$} \\ 
+  \emph{Donostiako\ $^1$ gizon\ $^2$ haundi\ $^3$ harek\ $^4$ zekarren\ $^5$ automobila\ $^6$} \\ \pause
   $\downarrow$
   \\
-  \emph{[El coche]\ $^6$ [que traía]\ $^5$ aquel$^4$ hombre$^2$ grande$^3$ [de San Sebastián]\ $^1$} \\[1cm]
+  \emph{[El coche]\ $^6$ [que traía]\ $^5$ aquel\ $^4$ hombre\ $^2$ grande\ $^3$ [de San Sebastián]\ $^1$} \\[1cm]\pause
  1--2--3--4--5--6 $\to$ 6--5--4--2--3--1 ! 
 \end{center}
 \end{frame}
 
-\section{Cierre}
+\section{Comentarios finales}
 
 \begin{frame}
 \frametitle{Para ir acabando\ldots}
 
-Espero\ldots
+Espero\ldots\pause
 \begin{itemize}
-\item \ldots que hayan aprendido un poquito más sobre la traducción automática como tecnología.
-\item \ldots que se animen a usarla más en su vida cotidiana para saltarse las barreras lingüísticas.
-\item \ldots que tengan muchas preguntas para mí!
+\item \ldots que hayan aprendido un poquito más sobre la traducción automática como tecnología.\pause
+\item \ldots que se animen a usarla más en su vida cotidiana para saltarse las barreras lingüísticas.\pause
+\item \ldots ¡que tengan muchas preguntas para mí!\pause
 \end{itemize}
+¡Muchas gracias!
 
 \end{frame}
 
